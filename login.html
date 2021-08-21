@@ -6,6 +6,12 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
+  <!--Google-->
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="1010450091429-djd956da7qplb0pbf7uner5enn3a7d47.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <!--Google-->
+
   <title>eMercado - Todo lo que busques está aquí</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
@@ -13,6 +19,7 @@
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/login.css" rel="stylesheet">
   <style>
     html, body{
       height: 100%;
@@ -34,20 +41,41 @@
       padding: 15px;
       margin: auto;
     }
+
+    .isValid{
+        background-color: lightgreen;
+        color: green;
+    }
+
+    .notValid{
+        background-color: pink;
+        color: red;
+    }
+
   </style>
 </head>
 
 <body class="text-center">
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 08/08/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
-  </div>
+    <div class=imagen ><img src="img/logoceibal.png" width = "auto" height = "200px" /></div> <br><br><br><br><br><br><br><br>
 
-  <script src="js/init.js"></script>
-  <script src="js/login.js"></script>
+    <div class="login"><br><br>
+        <h1>Iniciar sesión</h1><br>
+        <div>  
+            <input type="text" id="user" name="user" placeholder="Usuario" required="required" /><br>
+            <input type="password" id="pass" name="pass" placeholder="Contraseña" required="required" /><br>
+            <span id="msj"></span><br>
+            <button id="login" class="btn btn-primary btn-block btn-large" onclick="verificar()">Ingresar</button><br><br>
+            <div class="g-signin2" style="width: 300px" data-onsuccess="onSignIn" data-theme="ligth" ></div><!--Google-->
+        </div>
+    
+    </div>
+    <!-- sacamos el type submit y cambiamos el form por div-->
+
+
+
+  <!-- <script src="js/init.js"></script> -->
+  <script src="js/Login/login.js"></script>
+  <script src="js/Login/OAuth/Google.js"></script>
+
 </body>
 </html>
