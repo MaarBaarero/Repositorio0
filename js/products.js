@@ -1,19 +1,13 @@
 let url = PRODUCTS_URL;
 let productosArray = [];
 
-// document
-//   .getElementById("min")
-//   .addEventListener("change", showProductsList(productosArray));
-// document
-//   .getElementById("max")
-//   .addEventListener("change", showProductsList(productosArray));
 
 // Mostrar listado de productos
 function showProductsList(productosArray) {
   showSpinner();
 
   let htmlContentToAppend = "";
-  let mensaje =`<h1 style="color: grey" class="justify-content-between" >No se encontraron productos.</h1>`;
+  let mensaje = `<h1 style="color: grey" class="justify-content-between" >No se encontraron productos.</h1>`;
 
   let min = document.getElementById("min").value;
   let max = document.getElementById("max").value;
@@ -57,38 +51,23 @@ function showProductsList(productosArray) {
                 </div>
             </div>
         </div> `;
-    }
-  else{   
-    htmlContentToAppend = mensaje;    
-  }
+    } 
+    // else {
+    //   alert("No se encontraron")
+    //   // htmlContentToAppend = mensaje;
+    // }
 
     document.getElementById("tabla-productos").innerHTML = htmlContentToAppend;
     hideSpinner();
-    
-  
-  } 
-
-}
-
-function alerta(){
-  Swal.fire({
-    title: 'No se encontraron productos',
-    showClass: {
-      popup: 'animate__animated animate__fadeInDown'
-    },
-    hideClass: {
-      popup: 'animate__animated animate__fadeOutUp'
-    }
-  })
+  }
 }
 
 // Ordenar por precio o relevancia
 function ordenar() {
-
   let aux = [];
 
   // Precio
-  if (document.getElementById("asc").checked == true) {    
+  if (document.getElementById("asc").checked == true) {
     aux = productosArray.sort(function (a, b) {
       return a.cost - b.cost;
     });
@@ -114,19 +93,21 @@ function ordenar() {
     });
     showProductsList(aux);
   }
-
-  
 }
 
 // Buscar producto por nombre o descripción
 
 function buscar() {
   let textoAbuscar = document.getElementById("buscar").value;
-
-  let aux = productosArray.filter(producto => {
-    return (producto.name.toLowerCase().indexOf(textoAbuscar.toLowerCase())||(producto.description.toLowerCase().indexOf(textoAbuscar.toLowerCase()))) > -1;
+  let aux = productosArray.filter((producto) => {
+    return (
+      (producto.name.toLowerCase().indexOf(textoAbuscar.toLowerCase()) ||
+        producto.description
+          .toLowerCase()
+          .indexOf(textoAbuscar.toLowerCase())) > -1
+    );
   });
-  
+
   showProductsList(aux);
 }
 
