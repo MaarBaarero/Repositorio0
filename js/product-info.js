@@ -5,7 +5,7 @@ let mostrar = "";
 let nuevoComentario = "";
 let puntuacion = "";
 let hoy = new Date();
-let fechaActual =(  hoy.getFullYear()+"-"+(hoy.getMonth()+1)+"-"+hoy.getDay()+" "+hoy.getHours()+":"+hoy.getMinutes()+":"+hoy.getSeconds());
+let fechaActual = (hoy.getFullYear()+"-"+(hoy.getMonth()+1)+"-"+hoy.getDay()+" "+hoy.getHours()+":"+hoy.getMinutes()+":"+hoy.getSeconds());
 let usuario = JSON.parse(localStorage.getItem("usuario"));
 let nombre = usuario.nombre;
 
@@ -42,9 +42,12 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
   // for(let a=1; 1<6; a++){
   //     if (document.getElementById(a).checked){
-  //         document.getElementById(a).style.color="orange";
+  //         document.getElementsByTagName(a).style.color="orange";
   //     }
-  // }            No me funco :c
+  // }          
+    // No me funco :c
+
+
 });
 
 // Mostrar toda la informacion del producto
@@ -114,6 +117,7 @@ function mostrarComentarios(comentarios) {
 function comentar() {
   // Traigo el comentario de la caja de texto
   coment = document.getElementById("texto-comentario").value;
+  confirmacion = "";
 
   // Me fijo para cada radio, si esta seleccionado, y guardo la puntuacion con el valor del radio
   for (let i = 1; i < 6; i++) {
@@ -127,15 +131,37 @@ function comentar() {
     score: puntuacion,
     description: coment,
     user: nombre,
-    dataTime: fechaActual,
+    dateTime: fechaActual,
   });
 
   console.log(comentarios)
   mostrarComentarios(comentarios);
 
   // Alerta
-  
+  confirmacion = `
+  <div class="animate__zoomIn">
+    <div class="container justify-content-center">
+      <div style="margin-bottom:50px"></div>
+      <h1 class="row justify-content-center">¡ Hemos publicado tu comentario ! </h1>      
+      <div class="row justify-content-center">        
+        <h5 class="row justify-content-center" style="color: gray"> Podrás verlo más arriba junto a los demás comentarios </h5>        
+      </div>
+      <div class="row justify-content-center">
+        <lottie-player class="container justify-content-center" src="https://assets1.lottiefiles.com/packages/lf20_kfzgxkvq.json"  background="transparent"  speed="0.3"  style="width: 200px; height: 200px; opacity:0.5"  loop  autoplay></lottie-player>      
+      </div>
+    </div>
+    <div class="container justify-content-center">
+      <lottie-player class="container justify-content-center" src="https://assets9.lottiefiles.com/packages/lf20_y2hxPc.json"  background="transparent"  speed="0.5"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+      <div style="margin-bottom:300px"></div>
+    </div>
+  </div>  
+  `;
+  document.getElementById("confirmacion").innerHTML = confirmacion;
+  location.href="#ancla"
+
 }
+
+  // document.querySelectorAll('[Type=radio]').forEach((x) => x.checked=false);     deselecciona todos los radio
 
 // Calificacion
 function mostrarEstrellas(puntos) {

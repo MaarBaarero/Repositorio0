@@ -15,17 +15,25 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  
  
    <!--Google-->
    <meta name="google-signin-scope" content="profile email">
    <meta name="google-signin-client_id" content="1010450091429-djd956da7qplb0pbf7uner5enn3a7d47.apps.googleusercontent.com">
    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+   <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
    <!--Google-->
 
    <style>
+     
 
     button:hover{
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      animation: pulse;
+      animation-duration: 5s;
     }
 
     .zoom {
@@ -43,9 +51,13 @@
 
     .zoom:hover .zoom-content {
       display:inline-block;
+    }  
+        
+    .card img{
+      width: 80%;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
-    
 
     .estrellas {
     position: relative;
@@ -70,15 +82,20 @@
     font-size: 30px; 
     }
 
+    .estrellas i:hover{
+      color: rgb(255, 145, 0);
+      animation: pulse;
+      animation-duration: 5s;
+    }
+   
     .estrellas label:hover,
     .estrellas label:hover ~ label,
-    .estrellas input:checked ~ label {
-    color:orange;    
+    .estrellas input[type="radio"]:checked ~ label {
+    color:orange;   
+    animation: pulse;
+    animation-duration: 5s; 
     }
-    .card img{
-      width: 80%;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
+
       
    </style>
    
@@ -119,7 +136,7 @@
     <!-- Comentarios -->
     <div class="container">
       <hr><br>
-      <h1 class="row justify-content-center" style="margin-bottom: 10px;"> Echa un vistazo a los comentarios </h1>
+      <h1 class="row justify-content-center" style="margin-bottom: 10px;"> Échale un vistazo a los comentarios </h1>
 
       <div class="row justify-content-center">
         <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_ur7sluxh.json" mode="bounce" background="transparent"  speed="0.85"  style="width: 400px; height: 400px;" hover loop  ></lottie-player>
@@ -128,15 +145,23 @@
       <!-- Mostrar comentarios -->
       <div id="comentarios" class="container" style="position: relative; width:auto; top: 0;">        
       </div>
-
+      <div id="ancla"></div>
     </div>
     <hr><br>
-
-
-    <div class="row justify-content-center">
-      <h1 class="row justify-content-center"> ¡ Déjanos tu comentario ! </h1>
+   
+    <div id="confirmacion" class="row justify-content-center">
+      
     </div>
 
+    
+    
+    <div class="row justify-content-center">     
+      <h1 class="row justify-content-center" style="margin-left: 20px;margin-right: 20px;"> ¡ Déjanos tu comentario ! </h1>           
+    </div>
+    
+    <div class="row justify-content-center">
+      <lottie-player style="width: 100px;" src="https://assets8.lottiefiles.com/packages/lf20_6PnLAF.json"  background="transparent"  speed="0.5"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
+    </div>
     <hr style="width: 600px;">
 
     <!-- Para dejar comentario -->
