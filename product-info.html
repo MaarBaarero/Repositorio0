@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
 <html lang="en">
@@ -14,10 +15,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  <script src="sweetalert2.min.js"></script>
-  <link rel="stylesheet" href="sweetalert2.min.css">
-
-
+ 
    <!--Google-->
    <meta name="google-signin-scope" content="profile email">
    <meta name="google-signin-client_id" content="1010450091429-djd956da7qplb0pbf7uner5enn3a7d47.apps.googleusercontent.com">
@@ -25,12 +23,40 @@
    <!--Google-->
 
    <style>
+
+    button:hover{
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .zoom {
+      position: relative;
+      display: inline-block;
+    }
+
+    .zoom-content {
+      display: none;
+      position: absolute;
+      width: 500px;
+      box-shadow: 0px 8px 10px 0px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .zoom:hover .zoom-content {
+      display:inline-block;
+    }
+
+    
+
     .estrellas {
     position: relative;
     overflow: hidden;
     display: inline-block;
-    direction: rtl;/* right to left */
-    unicode-bidi: bidi-override;/* bidi de bidireccional */
+    direction: rtl;
+    unicode-bidi: bidi-override;  
+    }
+
+    .estrellas:hover{
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
     .estrellas input {
@@ -47,7 +73,11 @@
     .estrellas label:hover,
     .estrellas label:hover ~ label,
     .estrellas input:checked ~ label {
-    color:orange;
+    color:orange;    
+    }
+    .card img{
+      width: 80%;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
       
    </style>
@@ -78,15 +108,24 @@
     <!-- Info -->
     <div id="info-productos" class="container" style="position: relative; width:auto; top: 0;">      
     </div>
-    <br><br>
+    
+    <br>
+    <!-- Galeria -->
+    <div id="galeria" class="container" style="position: relative; width:auto; top: 0;">      
+    </div>
 
-    <!-- Para mostrar Comentarios -->
+    <br>
+   
+    <!-- Comentarios -->
     <div class="container">
-      <hr>
-      <h1 class="row justify-content-center" style="margin-bottom: 30px;"> Echa un vistazo a los comentarios </h1>
+      <hr><br>
+      <h1 class="row justify-content-center" style="margin-bottom: 10px;"> Echa un vistazo a los comentarios </h1>
+
       <div class="row justify-content-center">
         <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_ur7sluxh.json" mode="bounce" background="transparent"  speed="0.85"  style="width: 400px; height: 400px;" hover loop  ></lottie-player>
       </div> 
+
+      <!-- Mostrar comentarios -->
       <div id="comentarios" class="container" style="position: relative; width:auto; top: 0;">        
       </div>
 

@@ -1,55 +1,56 @@
-let infoProducto = "" ;
-let productosArray = "" ;
+let infoProducto = "";
+let productosArray = "";
 let comentarios = "";
 let mostrar = "";
 let nuevoComentario = "";
 let puntuacion = "";
 let hoy = new Date();
-let fechaActual = (hoy.getFullYear()+"-"+(hoy.getMonth()+1)+"-"+hoy.getDay()+" "+hoy.getHours()+":"+hoy.getMinutes()+":"+hoy.getSeconds());
+let fechaActual =(  hoy.getFullYear()+"-"+(hoy.getMonth()+1)+"-"+hoy.getDay()+" "+hoy.getHours()+":"+hoy.getMinutes()+":"+hoy.getSeconds());
 let usuario = JSON.parse(localStorage.getItem("usuario"));
 let nombre = usuario.nombre;
-
-
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
-    // inicio el carrusel
-    $('.carousel').carousel()    
-    // Json info
-    getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
-        if (resultObj.status === "ok") {
-          infoProducto = resultObj.data;
-          mostrarInfoProducto(infoProducto);
-        }
-    });
-    // Json comentarios 
-    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
-        if (resultObj.status === "ok") {
-          comentarios = resultObj.data;
-          mostrarComentarios(comentarios)
-        }
-    });
-    // info productos
-    getJSONData(PRODUCTS_URL).then(function (resultObj) {
-        if (resultObj.status === "ok") {
-        productosArray = resultObj.data;      
-        }
-    });
-   
-    // for(let a=1; 1<6; a++){
-    //     if (document.getElementById(a).checked){
-    //         document.getElementById(a).style.color="orange";
-    //     }
-    // }            No me funco :c
 
+  // inicio el carrusel  
+  $(".carousel").carousel();
+
+  // Json info
+  getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
+    if (resultObj.status === "ok") {
+      infoProducto = resultObj.data;
+      mostrarInfoProducto(infoProducto);
+      mostrarGaleria(infoProducto);
+    }
+  });
+  // Json comentarios
+  getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (resultObj) {
+    if (resultObj.status === "ok") {
+      comentarios = resultObj.data;
+      mostrarComentarios(comentarios);
+    }
+  });
+  // info productos
+  getJSONData(PRODUCTS_URL).then(function (resultObj) {
+    if (resultObj.status === "ok") {
+      productosArray = resultObj.data;
+    }
+  });
+  console.log(fechaActual)
+
+  // for(let a=1; 1<6; a++){
+  //     if (document.getElementById(a).checked){
+  //         document.getElementById(a).style.color="orange";
+  //     }
+  // }            No me funco :c
 });
 
 // Mostrar toda la informacion del producto
 function mostrarInfoProducto(infoProducto) {
-  informacion =
-    `<div class="list-group-item list-group-item-action">
+  informacion = `
+    <div class="list-group-item list-group-item-action">
         <div class="d-flex w-100 justify-content-center">                           
             <h1 class="row justify-content-center ">
             ${infoProducto.name} 
@@ -81,111 +82,130 @@ function mostrarInfoProducto(infoProducto) {
                  </h3>
             </div>
         </div>
-    </div><hr><br>
-
-    <div class="carousel slide" data-ride="carousel" data-interval="500">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="
-                ${infoProducto.images[1]} 
-                " alt="" class="img-thumbnail">
-                <div class="carousel-caption d-none d-md-block"></div>
-            </div>
-
-            <div class="carousel-item">
-                <img class="d-block w-100"  src="
-                ${infoProducto.images[2]}
-                " alt="" class="img-thumbnail">
-                <div class="carousel-caption d-none d-md-block"></div>
-            </div>
-    
-            <div class="carousel-item">
-                <img class="d-block w-100" src="
-                ${infoProducto.images[3]} 
-                " alt="" class="img-thumbnail">
-                <div class="carousel-caption d-none d-md-block"></div>
-            </div>
-    
-            <div class="carousel-item">
-                <img class="d-block w-100" src="
-                ${infoProducto.images[4]}
-                " alt="" class="img-thumbnail">
-                <div class="carousel-caption d-none d-md-block"></div>
-            </div>
-        </div>
     </div>
+    <hr><br>  
+    `;
 
-   
-            `;
+    document.getElementById("info-productos").innerHTML = informacion;
 
-  document.getElementById("info-productos").innerHTML = informacion;
   hideSpinner();
-  
 }
 
 //Mostrar comentarios
-function mostrarComentarios(comentarios){    
-
-    for(coment of comentarios){
-        puntos= parseInt(coment.score);
-        mostrar +=`
+function mostrarComentarios(comentarios) {
+  for (coment of comentarios) {
+    puntos = parseInt(coment.score);
+    mostrar += `
         <div class="list-group-item list-group-item-action">
             <div class="justify-content-center"> 
                 <h4>${coment.user}</h4>
-                <div id="puntuacion" style="margin-bottom: 10px"> ${mostrarEstrellas(puntos)}</div>
+                <div id="puntuacion" style="margin-bottom: 10px"> ${mostrarEstrellas(
+                  puntos
+                )}</div>
                 <p class="">${coment.description}</p>
                 <small class="text">${coment.dateTime}</small>
             </div>
-        </div> `;       
-    }     
-    document.getElementById("comentarios").innerHTML = mostrar;
+        </div> `;
+  }
+  document.getElementById("comentarios").innerHTML = mostrar;
 }
 
-
 // Agregar comentario
-function comentar(){ 
+function comentar() {
+  // Traigo el comentario de la caja de texto
+  coment = document.getElementById("texto-comentario").value;
 
-    // Traigo el comentario de la caja de texto
-    coment = document.getElementById("texto-comentario").value;
-
-    // Me fijo para cada radio, si esta seleccionado, y guardo la puntuacion con el valor del radio
-    for(let i=1; i<6; i++){
-        if(document.getElementById(i).checked){
-            puntuacion=document.getElementById(i).value;
-        }
+  // Me fijo para cada radio, si esta seleccionado, y guardo la puntuacion con el valor del radio
+  for (let i = 1; i < 6; i++) {
+    if (document.getElementById(i).checked) {
+      puntuacion = document.getElementById(i).value;
     }
-    
-    // Agrego toda la informacion del comentario al array ya existente y lo muestro
-    comentarios.push({score:puntuacion, description:coment, user:nombre, dataTime:fechaActual});
-    mostrarComentarios(comentarios);
+  }
 
-    // Alerta
-    Swal.fire(
-        '¡Listo!',
-        'Se ha publicado tu comentario',
-        'success'
-      )
+  // Agrego toda la informacion del comentario al array ya existente y lo muestro
+  comentarios.push({
+    score: puntuacion,
+    description: coment,
+    user: nombre,
+    dataTime: fechaActual,
+  });
+
+  console.log(comentarios)
+  mostrarComentarios(comentarios);
+
+  // Alerta
+  
 }
 
 // Calificacion
-function mostrarEstrellas(puntos){
-    
-    let estrellas = "";
-    for(let i=1; i<6; i++){
-        if(i<=puntos){
-            estrellas += `<i class='fas fa-star' style='color:orange'></i>`;
-        }
-        else{
-            estrellas += `<i class='far fa-star' style='color:gray'></i>`;
-        }
+function mostrarEstrellas(puntos) {
+  let estrellas = "";
+  for (let i = 1; i < 6; i++) {
+    if (i <= puntos) {
+      estrellas += `<i class='fas fa-star' style='color:orange'></i>`;
+    } else {
+      estrellas += `<i class='far fa-star' style='color:gray'></i>`;
     }
-    return estrellas;
+  }
+  return estrellas;
 }
 
+function mostrarGaleria(infoProducto) {
+    
+    let galeria = {};
+    galeria =`
+    <div class="list-group-item list-group-item-action">
+        <div class="card">
+            <div class="row justify-content-center">
 
+                <div class="zoom col d-block">
+                    <img src="${infoProducto.images[4]}" class="d-block w-100">                    
+                    <div class="zoom-content">
+                        <img src="${infoProducto.images[4]}" class="rounded mx-auto d-block" style="width: 500px;">
+                        <div class="carousel-caption d-none d-md-block" style="opacity:0.9">
+                            <h1 style="color: white;text-shadow: 2px 2px 4px black;">Diseño único a tu alcance</h1>                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="zoom col d-block">
+                    <img src="${infoProducto.images[2]}" class="rounded d-block w-100">
+                    <div class="zoom-content">
+                        <img src="${infoProducto.images[2]}" class="rounded mx-auto d-block" style="width: 500px;">
+                        <div class="carousel-caption d-none d-md-block" style="opacity:0.9">
+                            <h1 style="color: white;text-shadow: 2px 2px 4px black;">Más comodidad al viajar</h1>                          
+                        </div>
+                    </div>
+                </div>
+
+                <div class="zoom col d-block">
+                    <img src="${infoProducto.images[1]}" class="d-block w-100">
+                    <div class="zoom-content">
+                        <img src="${infoProducto.images[1]}" class="rounded mx-auto d-block" style="width: 500px;">
+                        <div class="carousel-caption d-none d-md-block" style="opacity:0.9">
+                        <h1 style="color: white;text-shadow: 2px 2px 4px black;">Rendimiento a toda prueba</h1>                        
+                        </div>
+                    </div>
+                </div>
+
+                <div class="zoom col d-block">
+                    <img src="${infoProducto.images[3]}" class="d-block w-100">
+                    <div class="zoom-content">
+                        <img src="${infoProducto.images[3]}" class="rounded mx-auto d-block" style="width: 500px;">
+                        <div class="carousel-caption d-none d-md-block" style="opacity:0.9">
+                            <h1 style="color: white;text-shadow: 2px 2px 4px black;">Seguridad por todos los caminos</h1>                            
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+    `;
+
+    document.getElementById("galeria").innerHTML = galeria;
+
+}
 // jason a mano
-
-
 
 // info
 
@@ -207,9 +227,7 @@ function mostrarEstrellas(puntos){
 // 3
 // ]
 
-
 // comentarios
-
 
 // [
 //     {
@@ -237,3 +255,89 @@ function mostrarEstrellas(puntos){
 //     "dateTime": "2020-02-21 15:05:22"
 //     }
 //     ]
+
+// <div class="carousel slide" data-ride="carousel" data-bs-ride="carousel" data-bs-interval="500">
+// <div class="carousel-inner">
+//     <div class="carousel-item active">
+//         <img class="d-block w-100" src="
+//         ${infoProducto.images[1]}
+//         " alt="">
+//         <div class="carousel-caption d-none d-md-block"></div>
+//     </div>
+
+//     <div class="carousel-item">
+//         <img class="d-block w-100"  src="
+//         ${infoProducto.images[2]}
+//         " alt="">
+//         <div class="carousel-caption d-none d-md-block"></div>
+//     </div>
+
+//     <div class="carousel-item">
+//         <img class="d-block w-100" src="
+//         ${infoProducto.images[3]}
+//         " alt="" >
+//         <div class="carousel-caption d-none d-md-block"></div>
+//     </div>
+
+//     <div class="carousel-item">
+//         <img class="d-block w-100" src="
+//         ${infoProducto.images[4]}
+//         " alt="">
+//         <div class="carousel-caption d-none d-md-block"></div>
+//     </div>
+// </div>
+// </div>
+
+// <br><br><br>
+// <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+//     <div class="carousel-indicators">
+//         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" aria-label="Slide 1" class="active" aria-current="true"></button>
+//         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+//         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+//         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide "></button>
+//     </div>
+
+//     <div class="carousel-inner">
+//         <div class="carousel-item active" data-bs-interval="10000">
+//             <img src="${infoProducto.images[1]}" class="d-block w-100">
+//             <div class="carousel-caption d-none d-md-block" style="opacity:0.9">
+//                 <h1 style="color: white;text-shadow: 2px 2px 4px black;">Diseño único a tu alcance</h1>
+//                 <p>Nueva carrocería totalmente renovada. El Chevrolet Joy viene con detalles en la grilla frontal y retrovisores en negro “High Gloss”. Mientras que el parachoques es pintado del color del vehículo, el farol viene con máscara negra con detalles cromados.</p>
+//             </div>
+//         </div>
+
+//         <div class="carousel-item" data-bs-interval="2000">
+//             <img src="${infoProducto.images[2]}" class="d-block w-100">
+            // <div class="carousel-caption d-none d-md-block" style="opacity:0.9">
+            //     <h1 style="color: white;text-shadow: 2px 2px 4px black;">Seguridad por todos los caminos</h1>
+            //     <p>Con el Chevrolet Joy, vos vas a manejar un auto con mucha más seguridad, con la luz de posición LED, doble airbag, frenos ABS con EBD, aviso sonoro para cinturón de seguridad del conductor y sistema Isofix & Top Tether para fijar a los más pequeños.</p>
+            // </div>
+//         </div>
+
+//         <div class="carousel-item">
+//             <img src="${infoProducto.images[3]}" class="d-block w-100">
+//             <div class="carousel-caption d-none d-md-block" style="opacity:0.9">
+                // <h1 style="color: white;text-shadow: 2px 2px 4px black;">Más comodidad al manejar</h1>
+//                 <p>Ahora, tu también podés tener más tecnología en tu día a día. El Chevrolet Joy tiene panel de instrumentos con múltiples informaciones al conductor, cinturones delanteros regulables en altura y dirección eléctrica progresiva para que tengas el control total del
+//                 vehículo.</p>
+//             </div>
+//         </div>
+
+//         <div class="carousel-item">
+//             <img src="${infoProducto.images[4]}" class="d-block w-100">
+//             <div class="carousel-caption d-none d-md-block" style="opacity:0.9">
+                // <h1 style="color: white;text-shadow: 2px 2px 4px black;">Rendimiento a toda prueba</h1>
+//                 <p>Chevrolet Joy viene con un motor 1.0 preparado para llevarte a donde quieras con un increíble rendimiento: en carretera 14,7 km/l y en ciudad 12,8 km/l.</p>
+//             </div>
+//         </div>
+//     </div>
+
+//     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+//         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+//         <span class="visually-hidden"></span>
+//     </button>
+//     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+//         <span class="carousel-control-next-icon" aria-hidden="true"></span>
+//         <span class="visually-hidden"></span>
+//     </button>
+// </div>
