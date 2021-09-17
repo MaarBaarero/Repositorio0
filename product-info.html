@@ -13,16 +13,50 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="sweetalert2.min.css">
+
 
    <!--Google-->
    <meta name="google-signin-scope" content="profile email">
    <meta name="google-signin-client_id" content="1010450091429-djd956da7qplb0pbf7uner5enn3a7d47.apps.googleusercontent.com">
    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
    <!--Google-->
- 
+
+   <style>
+    .estrellas {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    direction: rtl;/* right to left */
+    unicode-bidi: bidi-override;/* bidi de bidireccional */
+    }
+
+    .estrellas input {
+    position: absolute;
+    top: -100px;
+    }
+    
+    .estrellas label {
+    float: right;
+    color: #c1b8b8;
+    font-size: 30px; 
+    }
+
+    .estrellas label:hover,
+    .estrellas label:hover ~ label,
+    .estrellas input:checked ~ label {
+    color:orange;
+    }
+      
+   </style>
+   
 </head>
 
 <body>
+
+  <!-- Barra de navegacion entre paginas -->
   <nav class="site-header sticky-top py-1 bg-dark">
     <div class="container d-flex flex-column flex-md-row justify-content-between">
       <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
@@ -30,21 +64,88 @@
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <div>
-        <a id="nombre" class="py-2 d-none d-md-inline-block" href="my-profile.html"></a>
+      <div class="justify-content-between">        
         <img id="avatar" src="" style="width:40px; border-radius:50%; padding-left: 10px">
-        </div>
-      <button id="desconectar" class="btn btn-danger btn-sm" onclick="desconectar();">Desconectar</button>
+        <a id="nombre" class="py-2 d-none d-md-inline-block" href="my-profile.html"></a>
+        <button id="desconectar" class="btn btn-dark btn-sm" onclick="desconectar();"><i class="fas fa-sign-out-alt"></i></button>
+      </div>
     </div>
   </nav>
+
+<!-- Información de producto -->
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 3 (Fecha de entrega: 19/09/2021) y Entrega 4 (Fecha de entrega: 03/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+    
+    <!-- Info -->
+    <div id="info-productos" class="container" style="position: relative; width:auto; top: 0;">      
     </div>
+    <br><br>
+
+    <!-- Para mostrar Comentarios -->
+    <div class="container">
+      <hr>
+      <h1 class="row justify-content-center" style="margin-bottom: 30px;"> Echa un vistazo a los comentarios </h1>
+      <div class="row justify-content-center">
+        <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_ur7sluxh.json" mode="bounce" background="transparent"  speed="0.85"  style="width: 400px; height: 400px;" hover loop  ></lottie-player>
+      </div> 
+      <div id="comentarios" class="container" style="position: relative; width:auto; top: 0;">        
+      </div>
+
+    </div>
+    <hr><br>
+
+
+    <div class="row justify-content-center">
+      <h1 class="row justify-content-center"> ¡ Déjanos tu comentario ! </h1>
+    </div>
+
+    <hr style="width: 600px;">
+
+    <!-- Para dejar comentario -->
+    <div class="row justify-content-center">
+      
+      <!-- Estrellas para calificar -->         
+      <div class="row justify-content-center" style="width:900; margin-bottom: 30px;">
+
+          <div class="estrellas">
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label for="1" class="btn btn-light"><i class="fas fa-star"></i>
+                <input id="1" class="form-check-input" type="radio" name="estrellas" value="1" autocomplete="off">
+              </label>
+              <label for="2" class="btn btn-light"><i class="fas fa-star"></i>
+                <input id="2" class="form-check-input" type="radio" name="estrellas" value="2" autocomplete="off">
+              </label>
+              <label for="3" class="btn btn-light"><i class="fas fa-star"></i>
+                <input id="3" class="form-check-input" type="radio" name="estrellas" value="3" autocomplete="off">
+              </label>
+              <label for="4" class="btn btn-light"><i class="fas fa-star"></i>
+                <input id="4" class="form-check-input" type="radio" name="estrellas" value="4" autocomplete="off">
+              </label>            
+              <label for="5" class="btn btn-light"><i class="fas fa-star"></i>
+                <input id="5" class="form-check-input" type="radio" name="estrellas" value="5" autocomplete="off">
+              </label>      
+            </div>
+          </div>
+        
+      </div>
+      
+      <!-- Caja comentarios -->
+      <div class="row justify-content-center">
+          
+        <!-- textarea -->
+        <div class="row justify-content-center">
+          <textarea id="texto-comentario" class="justify-content-center" style="width: 900px;" placeholder="    Deje aqui su comentario..." ></textarea>
+          <br>
+        </div> 
+        <!-- boton -->
+        <div  class="row justify-content-between">        
+          <button class="btn btn-dark btn-lg" style="width: 900px; margin-top: 20px;" onclick="comentar();"><i class="far fa-comment-dots" style="margin-right: 30px;"></i>Comentar</button>        
+        </div>
+
+      </div>
+    </div>
+
   </div>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">

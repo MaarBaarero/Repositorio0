@@ -49,24 +49,12 @@
         >
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
         <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-        <div>
-          <a
-            id="nombre"
-            class="py-2 d-none d-md-inline-block"
-            href="my-profile.html"
-          ></a>
-          <img
-            id="avatar"
-            style="width: 40px; border-radius: 50%; padding-left: 10px"
-          />
+        
+        <div class="justify-content-between">        
+          <img id="avatar" src="" style="width:40px; border-radius:50%; padding-left: 10px">
+          <a id="nombre" class="py-2 d-none d-md-inline-block" href="my-profile.html"></a>
+          <button id="desconectar" class="btn btn-dark btn-sm" onclick="desconectar();"><i class="fas fa-sign-out-alt"></i></button>
         </div>
-        <button
-          id="desconectar"
-          class="btn btn-danger btn-sm"
-          onclick="desconectar();"
-        >
-          Desconectar
-        </button>
       </div>
     </nav>
     <main role="main" class="col-md-auto">
@@ -92,7 +80,8 @@
               <input
                 type="radio"
                 id="asc"
-                value="option1"
+                value="ordenar"
+                name="ordenar"
                 class="form-check-input"
                 autocomplete="off"                
               />U$D</label
@@ -102,7 +91,8 @@
               <input
                 type="radio"
                 id="des"
-                value="option2"
+                value="ordenar"
+                name="ordenar"
                 class="form-check-input"
                 autocomplete="off"
               />U$D</label
@@ -112,7 +102,8 @@
               <input
                 type="radio"
                 id="mas-rel"
-                value="option3"
+                value="ordenar"
+                name="ordenar"
                 class="form-check-input"
                 autocomplete="off"                
               />Más relevante</label
@@ -122,7 +113,8 @@
               <input
                 type="radio"
                 id="menos-rel"
-                value="option4"
+                value="ordenar"
+                name="ordenar"
                 class="form-check-input"
                 autocomplete="off"                
               />Menos relevante</label
@@ -179,5 +171,6 @@
     <script src="js/products.js"></script>
     <script src="js/Login/login.js"></script>
     <script src="js/Login/OAuth/Google.js"></script>
+    
   </body>
 </html>

@@ -1,8 +1,8 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-//document.addEventListener("DOMContentLoaded", function(e){
-//});
+document.addEventListener("DOMContentLoaded", function(e){
+});
 
     function verificar(){
         let user = document.getElementById("user");
@@ -34,16 +34,4 @@
         localStorage.clear(); // Para limpiar 
         signOut(); // Google
         location.href = "index.html";
-    }
-
-    function onLoad(){
-        gapi.load('auth2', function(){
-            gapi.auth2.init();            
-        });
-    }
-
-    function signOut() {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-        });
     }

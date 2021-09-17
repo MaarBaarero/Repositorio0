@@ -5,9 +5,9 @@ let productosArray = [];
 // Mostrar listado de productos
 function showProductsList(productosArray) {
   showSpinner();
-
+  
   let htmlContentToAppend = "";
-  let mensaje = `<h1 style="color: grey" class="justify-content-between" >No se encontraron productos.</h1>`;
+  // let mensaje = `<h1 style="color: grey" class="justify-content-between" >No se encontraron productos.</h1>`;
 
   let min = document.getElementById("min").value;
   let max = document.getElementById("max").value;
@@ -52,10 +52,7 @@ function showProductsList(productosArray) {
             </div>
         </div> `;
     } 
-    // else {
-    //   alert("No se encontraron")
-    //   // htmlContentToAppend = mensaje;
-    // }
+    
 
     document.getElementById("tabla-productos").innerHTML = htmlContentToAppend;
     hideSpinner();
@@ -102,27 +99,36 @@ function buscar() {
   let aux = productosArray.filter((producto) => {
     return (
       (producto.name.toLowerCase().indexOf(textoAbuscar.toLowerCase()) ||
-        producto.description
-          .toLowerCase()
-          .indexOf(textoAbuscar.toLowerCase())) > -1
-    );
+        producto.description.toLowerCase().indexOf(textoAbuscar.toLowerCase())) > -1);
   });
-
   showProductsList(aux);
 }
+
+
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
+
+  // Obtengo los productos del json y los muestro
   getJSONData(url).then(function (resultObj) {
     if (resultObj.status === "ok") {
       productosArray = resultObj.data;
-      //Muestro los productos ordenadas
+      //Muestro los productos
       showProductsList(productosArray);
     }
   });
+
+  // Leer teclado en el buscador
   document.getElementById("buscar").addEventListener("keyup", () => {
-    buscar();
+      buscar();
+  }); 
+
+  // Redirrecionar a la pagina de informacion del producto
+  document.getElementById("tabla-productos").addEventListener("click", () => {
+    location.href= "product-info.html"
+    alert("Direccionando")
   });
+
 });
