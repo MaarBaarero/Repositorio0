@@ -1,6 +1,9 @@
+// Variables globales
 let infoProducto = "";
 let productosArray = "";
+let galeria = "";
 let comentarios = "";
+let relacionados = "";    
 let mostrar = "";
 let nuevoComentario = "";
 let puntuacion = "";
@@ -14,15 +17,22 @@ let nombre = usuario.nombre;
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
 
-  // inicio el carrusel  
-  $(".carousel").carousel();
-
+  
   // Json info
   getJSONData(PRODUCT_INFO_URL).then(function (resultObj) {
     if (resultObj.status === "ok") {
       infoProducto = resultObj.data;
       mostrarInfoProducto(infoProducto);
       mostrarGaleria(infoProducto);
+      
+      // Json productos
+      getJSONData(PRODUCTS_URL).then(function (resultObj) {
+        if (resultObj.status === "ok") {
+          productosArray = resultObj.data;
+          productosRelacionados(infoProducto.relatedProducts);
+        }
+      });
+
     }
   });
   // Json comentarios
@@ -32,22 +42,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
       mostrarComentarios(comentarios);
     }
   });
-  // info productos
-  getJSONData(PRODUCTS_URL).then(function (resultObj) {
-    if (resultObj.status === "ok") {
-      productosArray = resultObj.data;
-    }
-  });
-  console.log(fechaActual)
-
-  // for(let a=1; 1<6; a++){
-  //     if (document.getElementById(a).checked){
-  //         document.getElementsByTagName(a).style.color="orange";
-  //     }
-  // }          
-    // No me funco :c
-
-
+  
+  console.log(fechaActual);
+  
 });
 
 // Mostrar toda la informacion del producto
@@ -133,11 +130,10 @@ function comentar() {
     user: nombre,
     dateTime: fechaActual,
   });
-
   console.log(comentarios)
   mostrarComentarios(comentarios);
 
-  // Alerta
+  // Mensajito de confirmación todo bonito c:
   confirmacion = `
   <div class="animate__zoomIn">
     <div class="container justify-content-center">
@@ -159,9 +155,7 @@ function comentar() {
   document.getElementById("confirmacion").innerHTML = confirmacion;
   location.href="#ancla"
 
-}
-
-  // document.querySelectorAll('[Type=radio]').forEach((x) => x.checked=false);     deselecciona todos los radio
+}  
 
 // Calificacion
 function mostrarEstrellas(puntos) {
@@ -176,9 +170,9 @@ function mostrarEstrellas(puntos) {
   return estrellas;
 }
 
+// Galeria
 function mostrarGaleria(infoProducto) {
     
-    let galeria = {};
     galeria =`
     <div class="list-group-item list-group-item-action">
         <div class="card">
@@ -231,7 +225,43 @@ function mostrarGaleria(infoProducto) {
     document.getElementById("galeria").innerHTML = galeria;
 
 }
-// jason a mano
+
+// Mostrar los productos relacionados
+function productosRelacionados(array){
+
+     
+    array.forEach(rel => {
+
+      relacionados += `
+      
+        <a class="relacionados"><div  class="justify-content-center" style="width: 500px;">
+        
+          <div class="card justify-content-center" style="width: 500px;">
+            <img src="${productosArray[rel].imgSrc}" style="width: 500px;">
+          </div>
+
+          <div class="row justify-content-center" style="width: 500px; margin-top:15px">
+            <h3 class="text-muted justify-content-center">${productosArray[rel].name}</h3>                
+          </div>
+
+        </div></a>
+        <hr>
+
+         
+
+      `;
+
+    });
+
+    document.getElementById("productos-relacionados").innerHTML = relacionados;
+
+}
+
+
+
+// Json a mano para trabajarlo
+
+// document.querySelectorAll('[Type=radio]').forEach((x) => x.checked=false);     deselecciona todos los radio
 
 // info
 
