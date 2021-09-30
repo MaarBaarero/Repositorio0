@@ -127,8 +127,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
   // Redirrecionar a la pagina de informacion del producto
   document.getElementById("tabla-productos").addEventListener("click", () => {
-    location.href= "product-info.html"
-    alert("Direccionando")
+    location.href= "product-info.html"    
   });
 
 });

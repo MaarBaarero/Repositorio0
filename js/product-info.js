@@ -228,8 +228,6 @@ function mostrarGaleria(infoProducto) {
 
 // Mostrar los productos relacionados
 function productosRelacionados(array){
-
-     
     array.forEach(rel => {
 
       relacionados += `
@@ -246,15 +244,10 @@ function productosRelacionados(array){
 
         </div></a>
         <hr>
-
-         
-
-      `;
+        `;
 
     });
-
     document.getElementById("productos-relacionados").innerHTML = relacionados;
-
 }
 
 
