@@ -10,6 +10,8 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 
     <!--Google-->
     <meta name="google-signin-scope" content="profile email">
@@ -21,20 +23,31 @@
     <link href="css/styles.css" rel="stylesheet">
   </head>
   <body>
-    <nav class="site-header sticky-top py-1 bg-dark">
+    <nav class="navbar is-primary" role="navigation" aria-label="dropdown navigation" style="margin-bottom:auto; margin-top:auto">
+    <!-- <nav class="site-header sticky-top py-1 bg-dark"> -->
       <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
-        <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-        <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-        <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-        <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-        <div class="justify-content-between">        
-          <img id="avatar" src="" style="width:40px; border-radius:50%; padding-left: 10px">
-          <a id="nombre" class="py-2 d-none d-md-inline-block" href="my-profile.html"></a>
-          <button id="desconectar" class="btn btn-dark btn-sm" onclick="desconectar();"><i class="fas fa-sign-out-alt"></i></button>
-        </div>
+        <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="index.html"><i class="fas fa-home" style="margin-right: 15px;"></i>Inicio</a>
+        <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="categories.html"><i class="fas fa-bars" style="margin-right: 15px;"></i>Categorías</a>
+        <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="products.html"><i class="fas fa-car" style="margin-right: 15px;"></i>Productos</a>
+        <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="sell.html"><i class="fas fa-comments-dollar" style="margin-right: 15px;"></i>Vender</a>
+        <!-- Usuario -->
+        <div style="margin-bottom:auto; margin-top:auto">
+          <div class="navbar-item has-dropdown is-hoverable" >
+            <a id="nombre" class="navbar-link is-arrowless justify-content-center"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 5px; color: white; width: 100px; text-align: center; margin-bottom:auto; margin-top:auto">
+            </a> 
+            <img id="avatar" src="" style="border-radius:50%; margin-left: 5px; width: 55px; margin-bottom:auto; margin-top:auto">
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="cart.html">Ver mi carrito<i class="fas fa-shopping-basket" style="margin-left: 50px;"></i></a>
+              <a class="navbar-item" href="my-profile.html">Ver mi perfil<i class="fas fa-user-circle" style="margin-left: 60px;"></i></a>
+              <hr class="navbar-divider">
+              <a class="navbar-item" href="#" onclick="desconectar();">Cerrar sesión <i class="fas fa-sign-out-alt" style="margin-left: 50px;"></i></a>
+            </div>          
+            <!-- <button id="desconectar" class="btn btn-dark btn-sm" onclick="desconectar();"><i class="fas fa-sign-out-alt"></i></button>           -->
+          </div>
+        </div>      
       </div>
     </nav>
+    
     <main role="main" class="pb-5">
         <div class="text-center p-4">
             <h2>Categorías</h2>

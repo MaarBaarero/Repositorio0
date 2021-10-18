@@ -1,11 +1,10 @@
 let url = PRODUCTS_URL;
 let productosArray = [];
 
-
 // Mostrar listado de productos
 function showProductsList(productosArray) {
   showSpinner();
-  
+
   let htmlContentToAppend = "";
   // let mensaje = `<h1 style="color: grey" class="justify-content-between" >No se encontraron productos.</h1>`;
 
@@ -23,36 +22,21 @@ function showProductsList(productosArray) {
       htmlContentToAppend +=
         `
         <div class="list-group-item list-group-item-action">
-            <div class="row">
-                <div class="col-3">
-                    <img src="` +
-        producto.imgSrc +
-        `" alt="` +
-        producto.description +
-        `" class="img-thumbnail">
-                </div>
-                <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h4 class="mb-1">` +
-        producto.name +
-        `</h4> 
-         <small class="text">` +
-        producto.soldCount +
-        ` artículos vendidos</small> 
-        <h3 class="text-muted">` +
-        producto.currency +
-        ` ` +
-        producto.cost +
-        ` </h3>
-                    </div>
-                    <p class="mb-1">` +
-        producto.description +
-        `</p>
-                </div>
+          <div class="row">
+            <div class="col-3">
+              <img src=" `+ producto.imgSrc +` " alt=" `+ producto.description +` " class="img-thumbnail">
             </div>
+            <div class="col">
+              <div class="d-flex w-100 justify-content-between">
+                <h4 class="mb-1"> `+ producto.name +` </h4> 
+                <small class="text"> `+ producto.soldCount +` artículos vendidos</small> 
+                <h3 class="text-muted">` +producto.currency +` `+ producto.cost +` </h3>
+              </div>
+              <p class="mb-1"> `+ producto.description +` </p>
+            </div>
+          </div>
         </div> `;
-    } 
-    
+    }
 
     document.getElementById("tabla-productos").innerHTML = htmlContentToAppend;
     hideSpinner();
@@ -99,18 +83,18 @@ function buscar() {
   let aux = productosArray.filter((producto) => {
     return (
       (producto.name.toLowerCase().indexOf(textoAbuscar.toLowerCase()) ||
-        producto.description.toLowerCase().indexOf(textoAbuscar.toLowerCase())) > -1);
+        producto.description
+          .toLowerCase()
+          .indexOf(textoAbuscar.toLowerCase())) > -1
+    );
   });
   showProductsList(aux);
 }
-
-
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function (e) {
-
   // Obtengo los productos del json y los muestro
   getJSONData(url).then(function (resultObj) {
     if (resultObj.status === "ok") {
@@ -122,12 +106,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
   // Leer teclado en el buscador
   document.getElementById("buscar").addEventListener("keyup", () => {
-      buscar();
-  }); 
+    buscar();
+  });
 
   // Redirrecionar a la pagina de informacion del producto
   document.getElementById("tabla-productos").addEventListener("click", () => {
-    location.href= "product-info.html"    
+    location.href = "product-info.html";
   });
-
 });

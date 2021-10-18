@@ -17,8 +17,33 @@
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
+  
   <style>
+    a:hover{
+      color: white;
+    }
+    a{
+      color: white;
+    }
+
+    body,html{
+      height:100%; /*Siempre es necesario cuando trabajamos con alturas*/
+    }
+
+    #flotante{
+      position:sticky; /*Fijo a la pantalla*/
+      right:20px;
+      bottom:20px; 
+      box-shadow: black;
+      z-index: 99;
+      transition: all 300ms ease 0ms;
+
+    }
+
+    .block:not(:last-child) {
+      margin-bottom: 1.5rem;
+    }
+
     .bd-placeholder-img {
       font-size: 1.125rem;
       text-anchor: middle;
@@ -37,32 +62,115 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <!-- Bulma CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
 
 <body>
-  <nav class="site-header sticky-top py-1 bg-dark">
+  <nav class="navbar is-primary" role="navigation" aria-label="dropdown navigation" style="margin-bottom:auto; margin-top:auto">
+  <!-- <nav class="site-header sticky-top py-1 bg-dark"> -->
     <div class="container d-flex flex-column flex-md-row justify-content-between">
-      <a class="py-2 d-none d-md-inline-block" href="index.html">Inicio</a>
-      <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-      <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-      <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      
-      <div class="justify-content-between">        
-        <img id="avatar" src="" style="width:40px; border-radius:50%; padding-left: 10px">
-        <a id="nombre" class="py-2 d-none d-md-inline-block" href="my-profile.html"></a>
-        <button id="desconectar" class="btn btn-dark btn-sm" onclick="desconectar();"><i class="fas fa-sign-out-alt"></i></button>
-      </div>
+      <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="index.html"><i class="fas fa-home" style="margin-right: 15px;"></i>Inicio</a>
+      <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="categories.html"><i class="fas fa-bars" style="margin-right: 15px;"></i>Categorías</a>
+      <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="products.html"><i class="fas fa-car" style="margin-right: 15px;"></i>Productos</a>
+      <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="sell.html"><i class="fas fa-comments-dollar" style="margin-right: 15px;"></i>Vender</a>
+      <!-- Usuario -->
+      <div style="margin-bottom:auto; margin-top:auto">
+        <div class="navbar-item has-dropdown is-hoverable" >
+          <a id="nombre" class="navbar-link is-arrowless justify-content-center"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 5px; color: white; width: 100px; text-align: center; margin-bottom:auto; margin-top:auto">
+          </a> 
+          <img id="avatar" src="" style="border-radius:50%; margin-left: 5px; width: 55px; margin-bottom:auto; margin-top:auto">
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="cart.html">Ver mi carrito<i class="fas fa-shopping-basket" style="margin-left: 50px;"></i></a>
+            <a class="navbar-item" href="my-profile.html">Ver mi perfil<i class="fas fa-user-circle" style="margin-left: 60px;"></i></a>
+            <hr class="navbar-divider">
+            <a class="navbar-item" href="#" onclick="desconectar();">Cerrar sesión <i class="fas fa-sign-out-alt" style="margin-left: 50px;"></i></a>
+          </div>          
+          <!-- <button id="desconectar" class="btn btn-dark btn-sm" onclick="desconectar();"><i class="fas fa-sign-out-alt"></i></button>           -->
+        </div>
+      </div>      
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 17/10/2021) y Entrega 7 (Fecha de entrega: 14/11/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  
+  <main role="main" class="content center" style="position:static;">
+
+    <!-- Cabecera -->
+    <div class="container justify-content-center" style="margin-top: 50px;">
+      <div class="content is-large justify-content-center">
+        <h1 class="title is-3 is-large justify-content-center">¡Bienvenido a tu carrito de compras!</h1>
+        <p class="subtitle is-6 is-small justify-content-center" style="margin-top:auto;">Aquí encontrarás todos los artículos que hayas agregado a tu carrito</p>
+        <hr style="width: 1200px;">
+      </div>
     </div>
-  </div>
+
+    <!-- Carrito -->
+    <div class="container justify-content-center">
+        <div class="box justify-content-center"style="width: 1200px;">
+          <!-- Articulos del carrito -->
+          <div class="row justify-content-center">
+            <div class="col" style="min-width: 900px;">
+
+              <div class="row justify-content-center">
+                <h2 class="is-large justify-content-center" style="margin-bottom: 100px;">Tus artículos</h2>
+              </div>
+              <div class="row justify-content-center">
+                <table class="table is-triped is-hoverable is-fullwidth text-center justify-content-between">
+                  <th style="width: 150px;"></th><th style="width: 400px;">Nombre del articulo</th><th style="width: 150px;">Cantidad de artículos</th><th style="width: 50px;">Moneda</th><th style="width: 150px;">Precio por unidad</th><th style="width: 150px;">Subtotal por artículo</th>
+
+                  <tbody id="carrito" class="" style="margin-top: auto; margin-bottom: auto;" >
+                  </tbody>
+
+                </table>
+              </div>
+
+            </div>            
+          </div>
+          <hr>
+          <!-- Calculos del total -->
+          <div class="col box" style="min-width: 100px; margin-top: 30px;">
+            <!-- Seccion de envíos -->
+            <div class="block justify-content-center justify-content-between" style="width:auto; margin-right:auto; margin-left:auto;position: relative;">
+              <div>
+                <h3 class="subtitle is-5 justify-content-center justify-content-between" style="margin-bottom: 5px;">Envios</h3>
+                <span class="subtitle is-6 text-muted" style="margin-bottom: 10px;">Selecciona el tipo de envío</span>
+                <br>
+                <br>
+              </div>
+              <div class="btn-group btn-group-toggle justify-content-center justify-content-between" data-toggle="buttons" style="width:auto; margin-right:auto; margin-left:auto;position: relative;">
+                <label class="btn btn-light"><input type="radio" checked> Sin envío 
+                </label>
+                <label class="btn btn-light"><input type="radio"> Envío normal   <span class="content">(15 días)</span> <span class="text-muted">Costo: $ 150.</span>
+                </label>
+                <label class="btn btn-light"><input type="radio"> Envío express  <span class="content">(3 días)</span> <span class="text-muted">Costo: $ 350.</span>
+                </label>
+              </div>
+            </div>
+            <hr>
+            <!-- Seccion del total -->
+            <div class="block" style="min-width: 100px; margin-top: 30px;">
+              <h3 class="subtitle is-5">Total</h3>
+              <div>
+                <span class="subtitle is-6" style="margin-right:150px">Subtotal:</span><span class="subtitle is-6 text" id="subtotal"></span>
+              </div>
+              <div>
+                <span class="subtitle is-6" style="margin-right:150px">Total a pagar:</span><span class="subtitle is-6 text" id="total"></span>
+              </div>
+            </div>        
+
+          </div>
+        </div>
+
+        
+      
+        <!-- Calculos del total -->
+        <div class="box text-center" style="position: sticky, absolute;">
+          <span>Total flotante</span>
+        </div>
+      </div>
+        
+  </main>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
