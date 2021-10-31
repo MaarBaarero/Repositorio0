@@ -25,7 +25,7 @@ function showProductsList(productosArray) {
           <div class="columns box">
 
             <div class="column">
-              <img src="${producto.imgSrc}" class="card">
+              <img class="sombritaImagen" src="${producto.imgSrc}">
             </div>
 
             <div class="column">

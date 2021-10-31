@@ -32,7 +32,7 @@ function mostrarCarrito(carritoArray){
     
     <td class="col" style="margin-top: auto; margin-bottom: auto;width:150px">
         <div class="flex">
-        <img src="${art.src}" class="card flex" style="margin-top: 10px; margin-bottom: 10px;min-width: 150px;max-width: 150px">
+        <img class="sombritaImagen" src="${art.src}" style="margin-top: 10px; margin-bottom: 10px;min-width: 150px;max-width: 150px">
         </div>
         </td>
         <td class="col" style="margin-top: auto; margin-bottom: auto;min-width: 400px">
