@@ -5,7 +5,8 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
 
@@ -20,6 +21,24 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
   <style>
+    
+    body{
+      max-width: 100%;
+    }
+
+    nav{
+      width: 100%;
+    }
+    main{
+      max-width: 100%;
+      margin-left: 2%;
+    }
+
+
+    .fondito{
+      background-color: rgba(62, 168, 255, 0.452);   
+    }
+
     .bd-placeholder-img {
       font-size: 1.125rem;
       text-anchor: middle;
@@ -38,12 +57,15 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <!-- Bulma CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
 
 <body>
-  <nav class="navbar is-primary" role="navigation" aria-label="dropdown navigation" style="margin-bottom:auto; margin-top:auto">
-  <!-- <nav class="site-header sticky-top py-1 bg-dark"> -->
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
+  <!-- Barra de navegación -->
+  <nav class="navbar is-info" role="navigation" aria-label="dropdown navigation" >
+    <div class="container d-flex flex-column flex-md-row justify-content-between" style="height: 10px;">
       <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="index.html"><i class="fas fa-home" style="margin-right: 15px;"></i>Inicio</a>
       <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="categories.html"><i class="fas fa-bars" style="margin-right: 15px;"></i>Categorías</a>
       <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="products.html"><i class="fas fa-car" style="margin-right: 15px;"></i>Productos</a>
@@ -51,30 +73,197 @@
       <!-- Usuario -->
       <div style="margin-bottom:auto; margin-top:auto">
         <div class="navbar-item has-dropdown is-hoverable" >
-          <a id="nombre" class="navbar-link is-arrowless justify-content-center"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 5px; color: white; width: 100px; text-align: center; margin-bottom:auto; margin-top:auto">
+          <a id="nombre" class="navbar-link is-arrowless justify-content-center"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 5px; color: white; width: 200px; text-align: center; margin-bottom:auto; margin-top:auto">
           </a> 
-          <img id="avatar" src="" style="border-radius:50%; margin-left: 5px; width: 55px; margin-bottom:auto; margin-top:auto">
+          <div class="" style="margin-bottom:auto; margin-top:auto; width:auto;">
+            <img id="avatar" style="width: 100%; border-radius:50%;">
+          </div>
           <div class="navbar-dropdown">
             <a class="navbar-item" href="cart.html">Ver mi carrito<i class="fas fa-shopping-basket" style="margin-left: 50px;"></i></a>
             <a class="navbar-item" href="my-profile.html">Ver mi perfil<i class="fas fa-user-circle" style="margin-left: 60px;"></i></a>
             <hr class="navbar-divider">
             <a class="navbar-item" href="#" onclick="desconectar();">Cerrar sesión <i class="fas fa-sign-out-alt" style="margin-left: 50px;"></i></a>
           </div>          
-          <!-- <button id="desconectar" class="btn btn-dark btn-sm" onclick="desconectar();"><i class="fas fa-sign-out-alt"></i></button>           -->
         </div>
       </div>      
     </div>
   </nav>
   
   
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
+  <!-- Cuerpo de la pagina -->
+  <main role="main" class="main content center" style="max-width: 100%; margin-top: 2%; margin-left: 2%;">
+    <!-- titulito -->
+    <div class="content center" style="max-width: 100%;">
+      <h1 class="title is-2 content center" style="text-align: center;">¡Bienvenido a tu perfil!</h1>
       <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
     </div>
-  </div>
+    
+    <div class="columns content center" style="max-width: 100%;">
+      
+      <!-- side -->
+      <div class="column fondito is-3 is-narrow">  
+        <div class="box content center">
+          <div class="content center"><!-- Imagen -->
+            <img class="" id="foto-perfil" style="width: 80%; border-radius: 50%; margin-left: 10%; margin-right: auto;">
+          </div>
+          <div>
+            <h2 class="title is-3 content center" id="nombre-perfil" style="text-align: center;"></h2>
+          </div>
+          <hr>
+          <div class="list">
+            <div class="column btn-group btn-group-toggle" data-toggle="buttons"><!-- Secciones -->
+              <label for="cuenta" class="btn btn-light" onclick="" style="width: 100%;">
+                <input
+                  type="radio"
+                  name="opcion"
+                  id="cuenta"
+                  class="form-check-input"
+                  autocomplete="off"
+                />Infomación de la cuenta
+              </label><br>
+              <label for="favoritos" class="btn btn-light" onclick="" style="width: 100%;">
+                <input
+                  type="radio"
+                  name="opcion"
+                  id="favoritos"
+                  class="form-check-input"
+                  autocomplete="off"
+                />Lista de favoritos
+              </label><br>
+              <label for="pedidos" class="btn btn-light" onclick="" style="width: 100%;">
+                <input
+                  type="radio"
+                  name="opcion"
+                  id="pedidos"
+                  class="form-check-input"
+                  autocomplete="off"
+                />Mis pedidos
+              </label><br>
+              <label for="compras" class="btn btn-light" onclick="" style="width: 100%;">
+                <input
+                  type="radio"
+                  name="opcion"
+                  id="compras"
+                  class="form-check-input"
+                  autocomplete="off"
+                />Mis compras
+              </label><br>
+              <label for="ventas" class="btn btn-light" onclick="" style="width: 100%;">
+                  <input
+                  type="radio"
+                  name="opcion"
+                  id="ventas"
+                  class="form-check-input"
+                  autocomplete="off"
+                />Mis ventas
+              </label><br>
+              <label for="configuracion" class="btn btn-light" onclick="" style="width: 100%;">
+                <input
+                  type="radio"
+                  name="opcion"
+                  id="configuracion"
+                  class="form-check-input"
+                  autocomplete="off"
+                />Configuración
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>  
+    
+      <!-- main -->
+      <div class="column fondito" style="width: max-content;">
+        <div class="box content center">
+
+          <!-- Actualizar datos -->
+          <div class="block content center" id="actualizar"> 
+            <p class="subtitle is-4">Actualiza tus datos</p>
+            <span class="content is-6 text-muted">Completa el siguiente formulario para actualizar la información de tu cuenta.</span><br>
+            <button class="button is-info center" style="margin-top: 3%;">Actualizar</button>
+            <hr>
+          </div>
+
+          <!-- Formulario -->
+          <div class="formulario ventanita box" id="form">
+            <button style="position: absolute;" onclick="cerrarVentana();"><i class="far fa-times-circle"></i></button>
+            <div class="justify-content-center" style="margin-bottom: 5%;margin-top: 2%;">
+              <h1 class="title is-4 text-center">Completa los campos y recuerda guadar cambios al finalizar.</h1>
+            </div>
+
+            <div class="field">
+              <label for="nombre" class="">Nombre</label>
+              <div class="control">
+                <input class="input" id="nombre" type="text" placeholder="Ingrese su nombre">
+              </div>
+            </div>
+            
+            <div class="field">
+              <label for="apellido" class="">Apellidos</label>
+              <div class="control">
+                <input class="input" id="apellido" type="text" placeholder="Ingrese sus apellidos">
+              </div>
+            </div>
+              
+            <div class="field">
+              <label for="nombre-usuario" class="">Nombre de Usuario</label>
+              <div class="control has-icons-left has-icons-right">
+                <input id="nombre-usuario" class="input is-success" type="text" placeholder="Ingrese un nombre de usuario">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+                <span class="icon is-small is-right">
+                  <i class="fas fa-check"></i>
+                </span>
+              </div>
+              <p class="help is-success">This username is available</p>
+            </div>
+              
+            <div class="field">
+              <div class="control">
+              </div>
+            </div>
+            
+            <div class="field">
+              <label for="correo" class="">Correo electrónico</label>
+              <div class="control has-icons-left has-icons-right">
+                <input class="input is-danger" id="correo" class="input is-danger" type="email" placeholder="Ingrese su nombre" value="ejemplo@noesvalido.com">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-envelope"></i>
+                </span>
+                <span class="icon is-small is-right">
+                  <i class="fas fa-exclamation-triangle"></i>
+                </span>
+              </div>
+              <p class="help is-danger">This email is invalid</p>
+            </div> 
+
+
+
+
+            <div class="field is-grouped justify-content-center">
+              <div class="control">
+                <button class="button is-success">Guardar cambios</button>
+              </div>            
+            </div>
+              
+            
+
+
+          </div>
+
+          <!-- Mostrar datos -->
+          <div class="content center" id="desplegar">
+
+          </div>
+
+        </div>
+      </div>  
+
+    </div>
+  </main>
+  <hr>
+
+
   <footer class="text-muted bg-light">
     <div class="container">
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>

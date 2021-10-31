@@ -36,119 +36,131 @@
       defer
     ></script>
     <!--Google-->
+
+    <style>
+      label:hover{
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 4px 0 rgba(0, 0, 0, 0.19);
+        animation: pulse;
+      }
+    </style>
   </head>
   <body>
-    <nav class="navbar is-primary" role="navigation" aria-label="dropdown navigation" style="margin-bottom:auto; margin-top:auto">
-    <!-- <nav class="site-header sticky-top py-1 bg-dark"> -->
-      <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="index.html"><i class="fas fa-home" style="margin-right: 15px;"></i>Inicio</a>
-        <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="categories.html"><i class="fas fa-bars" style="margin-right: 15px;"></i>Categorías</a>
-        <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="products.html"><i class="fas fa-car" style="margin-right: 15px;"></i>Productos</a>
-        <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="sell.html"><i class="fas fa-comments-dollar" style="margin-right: 15px;"></i>Vender</a>
-        <!-- Usuario -->
-        <div style="margin-bottom:auto; margin-top:auto">
-          <div class="navbar-item has-dropdown is-hoverable" >
-            <a id="nombre" class="navbar-link is-arrowless justify-content-center"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 5px; color: white; width: 100px; text-align: center; margin-bottom:auto; margin-top:auto">
-            </a> 
-            <img id="avatar" src="" style="border-radius:50%; margin-left: 5px; width: 55px; margin-bottom:auto; margin-top:auto">
-            <div class="navbar-dropdown">
-              <a class="navbar-item" href="cart.html">Ver mi carrito<i class="fas fa-shopping-basket" style="margin-left: 50px;"></i></a>
-              <a class="navbar-item" href="my-profile.html">Ver mi perfil<i class="fas fa-user-circle" style="margin-left: 60px;"></i></a>
-              <hr class="navbar-divider">
-              <a class="navbar-item" href="#" onclick="desconectar();">Cerrar sesión <i class="fas fa-sign-out-alt" style="margin-left: 50px;"></i></a>
-            </div>          
-            <!-- <button id="desconectar" class="btn btn-dark btn-sm" onclick="desconectar();"><i class="fas fa-sign-out-alt"></i></button>           -->
-          </div>
-        </div>      
-      </div>
-    </nav>
+    <!-- Barra de navegación -->
+    <header class="header" >
+      <nav class="navbar is-info" role="navigation" aria-label="dropdown navigation" >
+        <div class="container d-flex flex-column flex-md-row justify-content-between" style="height: 10px;">
+          <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="index.html"><i class="fas fa-home" style="margin-right: 15px;"></i>Inicio</a>
+          <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="categories.html"><i class="fas fa-bars" style="margin-right: 15px;"></i>Categorías</a>
+          <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="products.html"><i class="fas fa-car" style="margin-right: 15px;"></i>Productos</a>
+          <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="sell.html"><i class="fas fa-comments-dollar" style="margin-right: 15px;"></i>Vender</a>
+          <!-- Usuario -->
+          <div style="margin-bottom:auto; margin-top:auto">
+            <div class="navbar-item has-dropdown is-hoverable" >
+              <a id="nombre" class="navbar-link is-arrowless justify-content-center"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 5px; color: white; width: 200px; text-align: center; margin-bottom:auto; margin-top:auto">
+              </a> 
+              <div class="" style="margin-bottom:auto; margin-top:auto; width:auto;">
+                <img id="avatar" style="width: 100%; border-radius:50%;">
+              </div>
+              <div class="navbar-dropdown">
+                <a class="navbar-item" href="cart.html">Ver mi carrito<i class="fas fa-shopping-basket" style="margin-left: 50px;"></i></a>
+                <a class="navbar-item" href="my-profile.html">Ver mi perfil<i class="fas fa-user-circle" style="margin-left: 60px;"></i></a>
+                <hr class="navbar-divider">
+                <a class="navbar-item" href="#" onclick="desconectar();">Cerrar sesión <i class="fas fa-sign-out-alt" style="margin-left: 50px;"></i></a>
+              </div>          
+            </div>
+          </div>      
+        </div>
+      </nav>
+    </header>
     
-    
-    <main role="main" class="col-md-auto">
-      <div class="text-center">
-        <h2>Productos</h2>
+    <main role="main" class="main content center" style="max-width: 100%; margin-top: 2%; margin-left: 2%;">
+      <div class="content text-center" style="max-width: 100%;">
+        <h1 class="title is-2 content text-center" style="margin-bottom: 3%;">Productos</h1>
       </div>
       
       <!-- Comienza el Listado -->
-      <div id="listado-productos" class="row justify-content-center">
-        <!-- Barra de filtros -->
-        <div class="btn-group justify-content-center">
-          <!-- Buscar -->
-          <div class="btn-group justify-content-center">
-            <label for="buscar" class="btn btn-light">
-            <i class="fas fa-search justify-content-center"></i><br>
-            <input type="search" id="buscar" class="justify-content-center" />
-            </label>
-          </div>
-          <!-- Ordenar-->
-          <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label for="asc" id="l-asc" class="btn btn-light" onclick="ordenar()"
-              ><i class="fas fa-sort-amount-down-alt"></i><br>
-              <input
-                type="radio"
-                id="asc"
-                value="ordenar"
-                name="ordenar"
-                class="form-check-input"
-                autocomplete="off"                
-              />U$D</label
-            >
-            <label for="des" id="l-des" class="btn btn-light" onclick="ordenar()"
-              ><i class="fas fa-sort-amount-down"></i><br>
-              <input
-                type="radio"
-                id="des"
-                value="ordenar"
-                name="ordenar"
-                class="form-check-input"
-                autocomplete="off"
-              />U$D</label
-            >
-            <label for="mas-rel" class="btn btn-light" onclick="ordenar()"
-              ><i class="fas fa-sort-amount-down"></i><br>
-              <input
-                type="radio"
-                id="mas-rel"
-                value="ordenar"
-                name="ordenar"
-                class="form-check-input"
-                autocomplete="off"                
-              />Más relevante</label
-            >
-            <label for="menos-rel" class="btn btn-light" onclick="ordenar()"
-              ><i class="fas fa-sort-amount-down-alt"></i><br>
-              <input
-                type="radio"
-                id="menos-rel"
-                value="ordenar"
-                name="ordenar"
-                class="form-check-input"
-                autocomplete="off"                
-              />Menos relevante</label
-            >
-          </div>
-          <!-- Filtrar precio -->
-          <div class="btn-group justify-content-center">
-            <div class="btn btn-light">Filtrar por precio del producto:<br>
-              <input
-                type="number"
-                id="min"
-                class=""
-                placeholder="Precio mín."
-              />
-              <input
-                type="number"
-                id="max"
-                class=""
-                placeholder="Precio máx."                
-              /> 
-              
-            <button class="btn btn-primary btn-sm" onclick="showProductsList(productosArray);">Filtrar</button>
+      <div id="listado-productos" class="columns justify-content-center" style="max-width: 100%;">
+        <div class="column justify-content-center" style="max-width: 100%;">
+          <!-- Filtros -->
+          <div class="block content text-center" style="max-width: 100%;">
+            <!-- Buscar -->
+            <div class="btn-group justify-content-center">
+              <label for="buscar" class="btn btn-light">
+              <i class="fas fa-search justify-content-center"></i><br>
+              <input type="search" id="buscar" class="justify-content-center" />
+              </label>
+            </div>
+            <!-- Ordenar-->
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label for="asc" id="l-asc" class="btn btn-light" onclick="ordenar()"
+                ><i class="fas fa-sort-amount-down-alt"></i><br>
+                <input
+                  type="radio"
+                  id="asc"
+                  value="ordenar"
+                  name="ordenar"
+                  class="form-check-input"
+                  autocomplete="off"                
+                />U$D</label
+              >
+              <label for="des" id="l-des" class="btn btn-light" onclick="ordenar()"
+                ><i class="fas fa-sort-amount-down"></i><br>
+                <input
+                  type="radio"
+                  id="des"
+                  value="ordenar"
+                  name="ordenar"
+                  class="form-check-input"
+                  autocomplete="off"
+                />U$D</label
+              >
+              <label for="mas-rel" class="btn btn-light" onclick="ordenar()"
+                ><i class="fas fa-sort-amount-down"></i><br>
+                <input
+                  type="radio"
+                  id="mas-rel"
+                  value="ordenar"
+                  name="ordenar"
+                  class="form-check-input"
+                  autocomplete="off"                
+                />Más relevante</label
+              >
+              <label for="menos-rel" class="btn btn-light" onclick="ordenar()"
+                ><i class="fas fa-sort-amount-down-alt"></i><br>
+                <input
+                  type="radio"
+                  id="menos-rel"
+                  value="ordenar"
+                  name="ordenar"
+                  class="form-check-input"
+                  autocomplete="off"                
+                />Menos relevante</label
+              >
+            </div>
+            <!-- Filtrar precio -->
+            <div class="btn-group justify-content-center">
+              <div class="btn btn-light">Filtrar por precio del producto:<br>
+                <input
+                  type="number"
+                  id="min"
+                  class=""
+                  placeholder="Precio mín."
+                />
+                <input
+                  type="number"
+                  id="max"
+                  class=""
+                  placeholder="Precio máx."                
+                /> 
+                
+              <button class="btn btn-primary btn-sm" onclick="showProductsList(productosArray);">Filtrar</button>
+              </div>
             </div>
           </div>
+          <!-- Listado de productos -->
+          <div id="tabla-productos" class="block justify-content-center" style="max-width: 100%; padding: 1%;">
+          </div>
         </div>
-        <!-- Listado de productos -->
-        <div id="tabla-productos" class="row justify-content-center"></div>
       </div>
     </main>
 

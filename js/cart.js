@@ -8,19 +8,17 @@ let subtotal = "";
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
   
-});
+  // Json Carrito
+  getJSONData(URL).then(function (resultObj) {
+    if (resultObj.status === "ok") {
+      carritoArray = resultObj.data;
+      mostrarCarrito(carritoArray);
+      console.log(carritoArray);
+    }
+  
+  });
 
-    // Json Carrito
-    getJSONData(URL).then(function (resultObj) {
-      if (resultObj.status === "ok") {
-        carritoArray = resultObj.data;
-        mostrarCarrito(carritoArray);
-        console.log(carritoArray);
-      }else{
-      
-      }
-    
-    });
+});
 
 
 function mostrarCarrito(carritoArray){
@@ -29,37 +27,37 @@ function mostrarCarrito(carritoArray){
     let i=0;
 
     for (art of carritoArray.articles){
-    i++;
-    articulos += `
+      articulos += `
     <tr class="container justify-content-center justify-content-between text-center" style="margin-block: auto;width: auto;">
-      
-      <td class="col" style="margin-top: auto; margin-bottom: auto;width:150px">
+    
+    <td class="col" style="margin-top: auto; margin-bottom: auto;width:150px">
         <div class="flex">
-          <img src="${art.src}" class="card flex" style="margin-top: 10px; margin-bottom: 10px;min-width: 150px;max-width: 150px">
+        <img src="${art.src}" class="card flex" style="margin-top: 10px; margin-bottom: 10px;min-width: 150px;max-width: 150px">
         </div>
-      </td>
-      <td class="col" style="margin-top: auto; margin-bottom: auto;min-width: 400px">
+        </td>
+        <td class="col" style="margin-top: auto; margin-bottom: auto;min-width: 400px">
         <div class="col" style="margin-top: auto; margin-bottom: auto;">
-          <span class="subtitle is-5" style="margin-top: 10px; margin-bottom: 10px;">${art.name}</span>
+        <span class="subtitle is-5" style="margin-top: 10px; margin-bottom: 10px;">${art.name}</span>
         </div>
-      </td>
-      
-      <td class="col" style="margin-top: auto; margin-bottom: auto;min-width:150px">
-        <input type="number" id="cantidad${i}" onChange="calcular();" class="input number is-rounded is-warning" value=${art.count} style="margin-top: auto; margin-bottom: auto;width: 100px;">
-      </td>
-
-      <td class="col" style="margin-top: auto; margin-bottom: auto;min-width:50px">
+        </td>
+        
+        <td class="col" style="margin-top: auto; margin-bottom: auto;min-width:150px">
+        <input type="number" name="cantidad" id="cantidad${i}" onChange="calcular();" class="input number is-rounded is-warning" value=${art.count} style="margin-top: auto; margin-bottom: auto;width: 100px;">
+        </td>
+        
+        <td class="col" style="margin-top: auto; margin-bottom: auto;min-width:50px">
         <span class="text-muted" style="margin-top: auto; margin-bottom: auto;">${art.currency}</span>
-      </td> 
-      <td class="col" style="margin-top: auto; margin-bottom: auto;min-width:150px">
+        </td> 
+        <td class="col" style="margin-top: auto; margin-bottom: auto;min-width:150px">
         <span id="precio${i}" class="text-muted" style="margin-top: auto; margin-bottom: auto;">${art.unitCost}</span>
-      </td>
-      
-      <td class="col" style="margin-top: auto; margin-bottom: auto;min-width:150px">
-        <span id="subtotal${i}" class="text-muted" style="margin-top: auto; margin-bottom: auto;"></span>
-      </td>
-    </tr>
-    `;
+        </td>
+        
+        <td class="col" style="margin-top: auto; margin-bottom: auto;min-width:150px">
+          <div id="subtotal${i}"></div>        
+        </td>
+        </tr>
+        `;
+        i++;
   }
   document.getElementById("carrito").innerHTML = articulos;
   calcular();
@@ -67,29 +65,57 @@ function mostrarCarrito(carritoArray){
 }
 
 function calcular(){
-  let precios = "";
-  let cantidad = "";
-  let total = "";
-  let subtotal = "";
-  let subtotalF = "";
-  let i=0;
-  
+  let precio = 0;
+  let cantidad = 0;
+  let total = 0;
+  let subtotal = 0;
+  let subtotalF = 0;
+  let envio = 0;
+  let i=0;  
 
   for (articulo of carritoArray.articles){
-    precios = parseFloat(document.getElementById("precio"+i));
-    cantidad = parseFloat(document.getElementById("cantidad"+i));
-    console.log(precios[i]);
-    console.log(cantidad[i]);
-    console.log(`llega-------------------`);
 
-    subtotal += parseFloat(precios[i] * cantidad);
-    subtotalF += parseFloat(subtotal);
-    total += parseFloat(subtotal);
+    // Guardo el precio y cantidad en variables
+    precio = parseFloat(articulo.unitCost);
+    console.log("Precio : "+articulo.unitCost);    
+    cantidad = parseFloat(document.getElementById("cantidad"+i).value);
+    console.log("cantidad : "+cantidad);
     
-    document.getElementById("subtotal"+i).innerHTML = parseFloat(precios[i] * cantidad);
+    subtotal = precio * cantidad;
+    console.log("subtotal : "+subtotal);
+    
+    document.getElementById("subtotal"+i).innerHTML = `<span  class="text-muted" style="margin-top: auto; margin-bottom: auto;">${subtotal}</span>`;
+    
+    console.log(`------- ARTICULO -------`);    
+    
+    // el otro subtotal final: 20012500
+    subtotalF += parseInt(subtotal);
+    console.log("el otro subtotal final: "+subtotalF);
+
+    
+    total += parseFloat(subtotalF);
     i++;
   }
+  
+  // Envios
+  if(document.getElementById("envio-normal").checked == true){
+    envio = 150
+    total += parseFloat(envio);  
+    console.log("Total con envio: "+total)
+  }
+  if(document.getElementById("envio-express").checked == true){
+    envio = 350
+    total += parseFloat(envio);  
+    console.log("Total con envio: "+total)
+  }
+  if(document.getElementById("sin-envio").checked == true){
+    envio = 0 //Por si tocan otro antes me aseguro de que vuelva a cero
+    total += parseFloat(envio);  
+    console.log("Total con envio: "+total)
+  }
+  console.log("Envio: "+envio)
 
+  document.getElementById("envio").innerHTML = envio
   document.getElementById("subtotal").innerHTML = (subtotalF).toFixed(2);
   document.getElementById("total").innerHTML = (total).toFixed(2);
   

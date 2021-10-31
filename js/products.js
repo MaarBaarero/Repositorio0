@@ -21,19 +21,27 @@ function showProductsList(productosArray) {
     if (producto.cost >= min && producto.cost <= max) {
       htmlContentToAppend +=
         `
-        <div class="list-group-item list-group-item-action">
-          <div class="row">
-            <div class="col-3">
-              <img src=" `+ producto.imgSrc +` " alt=" `+ producto.description +` " class="img-thumbnail">
+        <div class="table" style="padding:1%">
+          <div class="columns box">
+
+            <div class="column">
+              <img src="${producto.imgSrc}" class="card">
             </div>
-            <div class="col">
-              <div class="d-flex w-100 justify-content-between">
-                <h4 class="mb-1"> `+ producto.name +` </h4> 
-                <small class="text"> `+ producto.soldCount +` artículos vendidos</small> 
-                <h3 class="text-muted">` +producto.currency +` `+ producto.cost +` </h3>
+
+            <div class="column">
+              <div class="justify-content-between">
+                <h4 class="title is-3">${producto.name}</h4> 
+                <div class="block">
+                  <p class="mb-1"> `+ producto.description +` </p>
+                </div>
+                <hr>
+                <div class="content in-line">
+                  <small class="text"> ${producto.soldCount} artículos vendidos</small> 
+                  <span class="subtitle is-3 text-muted" style="margin-left:250px">` +producto.currency +` `+ producto.cost +` </span>
+                </div>
               </div>
-              <p class="mb-1"> `+ producto.description +` </p>
             </div>
+
           </div>
         </div> `;
     }
