@@ -21,20 +21,18 @@
     <link href="css/font-awesome.min.css" rel="stylesheet" />
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
+
+    <!-- Animacion -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
     <!-- Bulma CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 
     <!--Google-->
     <meta name="google-signin-scope" content="profile email" />
-    <meta
-      name="google-signin-client_id"
-      content="1010450091429-djd956da7qplb0pbf7uner5enn3a7d47.apps.googleusercontent.com"
-    />
-    <script
-      src="https://apis.google.com/js/platform.js?onload=onLoad"
-      async
-      defer
-    ></script>
+    <meta name="google-signin-client_id" content="1010450091429-djd956da7qplb0pbf7uner5enn3a7d47.apps.googleusercontent.com"/>
+    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
     <!--Google-->
 
     <style>
@@ -74,92 +72,91 @@
     </header>
     
     <main role="main" class="main content center" style="max-width: 100%; margin-top: 2%; margin-left: 2%;">
-      <div class="content text-center" style="max-width: 100%;">
-        <h1 class="title is-2 content text-center" style="margin-bottom: 3%;">Productos</h1>
+      <div class="content text-center" style="max-width: 100%; margin-top: 10%;">
+        <h1 class="title is-2 content text-center" style="margin-bottom:0% ">Productos</h1>
+        <hr>
       </div>
       
       <!-- Comienza el Listado -->
-      <div id="listado-productos" class="columns justify-content-center" style="max-width: 100%;">
-        <div class="column justify-content-center" style="max-width: 100%;">
-          <!-- Filtros -->
-          <div class="block content text-center" style="max-width: 100%;">
-            <!-- Buscar -->
-            <div class="btn-group justify-content-center">
-              <label for="buscar" class="btn btn-light">
-              <i class="fas fa-search justify-content-center"></i><br>
-              <input type="search" id="buscar" class="justify-content-center" />
-              </label>
-            </div>
-            <!-- Ordenar-->
-            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-              <label for="asc" id="l-asc" class="btn btn-light" onclick="ordenar()"
-                ><i class="fas fa-sort-amount-down-alt"></i><br>
-                <input
-                  type="radio"
-                  id="asc"
-                  value="ordenar"
-                  name="ordenar"
-                  class="form-check-input"
-                  autocomplete="off"                
-                />U$D</label
-              >
-              <label for="des" id="l-des" class="btn btn-light" onclick="ordenar()"
-                ><i class="fas fa-sort-amount-down"></i><br>
-                <input
-                  type="radio"
-                  id="des"
-                  value="ordenar"
-                  name="ordenar"
-                  class="form-check-input"
-                  autocomplete="off"
-                />U$D</label
-              >
-              <label for="mas-rel" class="btn btn-light" onclick="ordenar()"
-                ><i class="fas fa-sort-amount-down"></i><br>
-                <input
-                  type="radio"
-                  id="mas-rel"
-                  value="ordenar"
-                  name="ordenar"
-                  class="form-check-input"
-                  autocomplete="off"                
-                />Más relevante</label
-              >
-              <label for="menos-rel" class="btn btn-light" onclick="ordenar()"
-                ><i class="fas fa-sort-amount-down-alt"></i><br>
-                <input
-                  type="radio"
-                  id="menos-rel"
-                  value="ordenar"
-                  name="ordenar"
-                  class="form-check-input"
-                  autocomplete="off"                
-                />Menos relevante</label
-              >
-            </div>
-            <!-- Filtrar precio -->
-            <div class="btn-group justify-content-center">
-              <div class="btn btn-light">Filtrar por precio del producto:<br>
-                <input
-                  type="number"
-                  id="min"
-                  class=""
-                  placeholder="Precio mín."
-                />
-                <input
-                  type="number"
-                  id="max"
-                  class=""
-                  placeholder="Precio máx."                
-                /> 
-                
-              <button class="btn btn-primary btn-sm" onclick="showProductsList(productosArray);">Filtrar</button>
-              </div>
+      <div class="column justify-content-center" style="max-width: 100%; margin-top: 1%;">
+        <!-- Filtros -->
+        <div class="list box content center text-center" style="max-width: 100%; width: 96%; left:1%; position: relative;">
+          <!-- Buscar -->
+          <div class="btn-group justify-content-center">
+            <label for="buscar" class="btn btn-light">
+            <i class="fas fa-search justify-content-center"></i><br>
+            <input type="search" id="buscar" class="justify-content-center" />
+            </label>
+          </div>
+          <!-- Ordenar-->
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label for="asc" id="l-asc" class="btn btn-light" onclick="ordenar()"
+              ><i class="fas fa-sort-amount-down-alt"></i><br>
+              <input
+                type="radio"
+                id="asc"
+                value="ordenar"
+                name="ordenar"
+                class="form-check-input"
+                autocomplete="off"                
+              />U$D</label
+            >
+            <label for="des" id="l-des" class="btn btn-light" onclick="ordenar()"
+              ><i class="fas fa-sort-amount-down"></i><br>
+              <input
+                type="radio"
+                id="des"
+                value="ordenar"
+                name="ordenar"
+                class="form-check-input"
+                autocomplete="off"
+              />U$D</label
+            >
+            <label for="mas-rel" class="btn btn-light" onclick="ordenar()"
+              ><i class="fas fa-sort-amount-down"></i><br>
+              <input
+                type="radio"
+                id="mas-rel"
+                value="ordenar"
+                name="ordenar"
+                class="form-check-input"
+                autocomplete="off"                
+              />Más relevante</label
+            >
+            <label for="menos-rel" class="btn btn-light" onclick="ordenar()"
+              ><i class="fas fa-sort-amount-down-alt"></i><br>
+              <input
+                type="radio"
+                id="menos-rel"
+                value="ordenar"
+                name="ordenar"
+                class="form-check-input"
+                autocomplete="off"                
+              />Menos relevante</label
+            >
+          </div>
+          <!-- Filtrar precio -->
+          <div class="btn-group justify-content-center">
+            <div class="btn btn-light">Filtrar por precio del producto:<br>
+              <input
+                type="number"
+                id="min"
+                class=""
+                placeholder="Precio mín."
+              />
+              <input
+                type="number"
+                id="max"
+                class=""
+                placeholder="Precio máx."                
+              /> 
+              
+            <button class="btn btn-primary btn-sm" onclick="showProductsList(productosArray);">Filtrar</button>
             </div>
           </div>
-          <!-- Listado de productos -->
-          <div id="tabla-productos" class="block justify-content-center" style="max-width: 100%; padding: 1%;">
-          </div>
+        </div>
+        <!-- Listado de productos -->
+        <div id="tabla-productos" class="table content center" style="max-width: 100%; padding: 1%;">
         </div>
       </div>
     </main>

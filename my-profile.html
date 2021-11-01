@@ -16,6 +16,11 @@
    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
    <!--Google-->
  
+   
+  <!-- Animacion -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
@@ -76,7 +81,9 @@
           <a id="nombre" class="navbar-link is-arrowless justify-content-center"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 5px; color: white; width: 200px; text-align: center; margin-bottom:auto; margin-top:auto">
           </a> 
           <div class="" style="margin-bottom:auto; margin-top:auto; width:auto;">
-            <img id="avatar" style="width: 100%; border-radius:50%;">
+            <figure class="image">    
+              <img class="sombritaImagen is-rounded" id="avatar" style="width: 100%;">
+            </figure>
           </div>
           <div class="navbar-dropdown">
             <a class="navbar-item" href="cart.html">Ver mi carrito<i class="fas fa-shopping-basket" style="margin-left: 50px;"></i></a>
@@ -93,8 +100,10 @@
   <!-- Cuerpo de la pagina -->
   <main role="main" class="main content center" style="max-width: 100%; margin-top: 2%; margin-left: 2%;">
     <!-- titulito -->
-    <div class="content center" style="max-width: 100%;">
-      <h1 class="title is-2 content center" style="text-align: center;">¡Bienvenido a tu perfil!</h1>
+    <div class="content center text-center" style="max-width: 100%;">
+      <h1 class="title is-2 text-center" >¡Bienvenido a tu área personal!</h1>
+      <span class="subtitle text-center text-muted">Aqui podrás administrar toda tu información personal</span><br>
+      <small class="text-center text-muted">Desde visualizar y modificar tu información personal, tanto como ver tus pedidos recientes, favoritos, tus compras y demás</small>
       <hr>
     </div>
     
@@ -103,8 +112,11 @@
       <!-- side -->
       <div class="column fondito is-3 is-narrow">  
         <div class="box content center">
-          <div class="content center"><!-- Imagen -->
-            <img class="sombritaImagen" id="foto-perfil" style="width: 80%; border-radius: 50%; margin-left: 10%; margin-right: auto;">
+          <div class="content center">
+            <!-- Imagen -->
+            <figure class="image">    
+              <img class="sombritaImagen is-rounded" id="foto-perfil" style="width: 80%; margin-left: 10%; margin-right: auto;">
+            </figure>
           </div>
           <div>
             <h2 class="title is-3 content center" id="nombre-perfil" style="text-align: center;"></h2>
@@ -176,83 +188,243 @@
         <div class="box content center">
 
           <!-- Actualizar datos -->
-          <div class="block content center" id="actualizar"> 
+          <div class="block content center"> 
             <p class="subtitle is-4">Actualiza tus datos</p>
             <span class="content is-6 text-muted">Completa el siguiente formulario para actualizar la información de tu cuenta.</span><br>
-            <button class="button is-info center" style="margin-top: 3%;">Actualizar</button>
+            <button class="button is-info center"  id="actualizar" style="margin-top: 3%;">Actualizar</button>
             <hr>
           </div>
 
-          <!-- Formulario -->
-          <div class="formulario ventanita box" id="form">
-            <button style="position: absolute;" onclick="cerrarVentana();"><i class="far fa-times-circle"></i></button>
-            <div class="justify-content-center" style="margin-bottom: 5%;margin-top: 2%;">
-              <h1 class="title is-4 text-center">Completa los campos y recuerda guadar cambios al finalizar.</h1>
-            </div>
+          <!-- Formulario actualizar datos -->
+          <div id="ventana-actualizar" class="ventanaActualizar cerrarVentanita box" style="border-radius: 3%;">
+            <!-- <div class="modal-background"></div> -->
+            <!-- <div class="modal-content" style="border-radius: 5%; width: 100%;"> -->
 
-            <div class="field">
-              <label for="nombre" class="">Nombre</label>
-              <div class="control">
-                <input class="input" id="nombre" type="text" placeholder="Ingrese su nombre">
-              </div>
-            </div>
-            
-            <div class="field">
-              <label for="apellido" class="">Apellidos</label>
-              <div class="control">
-                <input class="input" id="apellido" type="text" placeholder="Ingrese sus apellidos">
-              </div>
-            </div>
-              
-            <div class="field">
-              <label for="nombre-usuario" class="">Nombre de Usuario</label>
-              <div class="control has-icons-left has-icons-right">
-                <input id="nombre-usuario" class="input is-success" type="text" placeholder="Ingrese un nombre de usuario">
-                <span class="icon is-small is-left">
-                  <i class="fas fa-user"></i>
-                </span>
-                <span class="icon is-small is-right">
-                  <i class="fas fa-check"></i>
-                </span>
-              </div>
-              <p class="help is-success">This username is available</p>
-            </div>
-              
-            <div class="field">
-              <div class="control">
-              </div>
-            </div>
-            
-            <div class="field">
-              <label for="correo" class="">Correo electrónico</label>
-              <div class="control has-icons-left has-icons-right">
-                <input class="input is-danger" id="correo" class="input is-danger" type="email" placeholder="Ingrese su nombre" value="ejemplo@noesvalido.com">
-                <span class="icon is-small is-left">
-                  <i class="fas fa-envelope"></i>
-                </span>
-                <span class="icon is-small is-right">
-                  <i class="fas fa-exclamation-triangle"></i>
-                </span>
-              </div>
-              <p class="help is-danger">This email is invalid</p>
-            </div> 
+              <div class="block" style="padding: 5%;">
 
-
-
-
-            <div class="field is-grouped justify-content-center">
-              <div class="control">
-                <button class="button is-success">Guardar cambios</button>
-              </div>            
-            </div>
-              
-            
+                
+                <div id="cerrar-actualizar" style="position:absolute; left: 90%; border-radius: 50%; opacity: 50%;" class="cerrarActualizar sombritaHover" aria-label="close"><i class="far fa-times-circle fa-2x text-muted" style="size: 2x;"></i></div>
+                <div class="block content center text-center justify-content-center" style="margin-bottom: 5%;margin-top: 2%;">
+                  <span class="title is-2 text-center">Completa los campos</span><br><br>
+                  <small class="content text-center text-muted" style="right: 50%;">Recuerda guadar los cambios realizados al finalizar</small>
+                  <hr style="width: 50%; position: relative; left: 25%;">
+                </div>
+    
+                <!-- Cuerpo del form -->
+                <div style="margin-bottom: 5%;">                
+                  <!-- Subir imagen -->
+                  <div class="columns">
+                    <div class="column">                   
+                      <div class="field is-grouped content center">
+                        <div class="field zoom content center text-center" style="margin-left: 5%;">
+                          <figure class="image">
+                            <img class="sombritaImagen is-rounded zoom" src="" id="vista-previa" style="width: 50%;"><hr>                
+                          </figure>
+                          <small class="text-center text-muted">
+                            Puedes hacer un acercamiento a la imagen posando el cursor sobre ella
+                          </small>
+                          <div class="zoom-content">
+                            <img class="sombritaImagen is-rounded zoom" src="" id="vista-previa-zoom" style="width: 100%;" ><hr>
+                          </div>
+                        </div>                 
+                        <div class="field" style="margin-left: 5%;margin-top: 5%;position: relative;">
+                          <div class="file is-info has-name is-boxed">
+                            <label for="imagen" class="file-label sombritaHover">
+                              <input class="file-input" type="file" id="imagen" name="imagen">
+                              <span class="file-cta">
+                                <span class="file-icon">
+                                  <i class="fas fa-cloud-upload-alt"></i>
+                                </span>
+                                <span class="file-label">
+                                  Cargar archivo...
+                                </span>
+                              </span>
+                              <span class="file-name text-center text-muted">
+                                Selecciona un archivo de tu dispositivo...
+                              </span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <!-- Nombre  -->
+                  <div class="field">
+                    <label for="nombres" class="">Nombre</label>
+                    <div class="control">
+                      <input class="input is-rounded is-hoverable" id="nombres" type="text" placeholder="Ingrese su nombre">
+                    </div>
+                  </div>
+                  <!-- Apellido -->
+                  <div class="field">
+                    <label for="apellidos" class="">Apellidos</label>
+                    <div class="control">
+                      <input class="input is-rounded is-hoverable" id="apellidos" type="text" placeholder="Ingrese sus apellidos">
+                    </div>
+                  </div>
+                    <!-- Usuario -->
+                  <div class="field">
+                    <label for="nombre-usuario" class="">Nombre de Usuario</label>
+                    <div class="control has-icons-left has-icons-right">
+                      <input id="nombre-usuario" class="input is-rounded is-hoverable is-success" type="text" placeholder="Ingrese un nombre de usuario">
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                      </span>
+                      <span class="icon is-small is-right">
+                        <i class="fas fa-check"></i>
+                      </span>
+                    </div>
+                    <p class="help is-success">This username is available</p>
+                  </div>
+                  <!-- Correo -->
+                  <div class="field">
+                    <label for="correo" class="">Correo electrónico</label>
+                    <div class="control has-icons-left has-icons-right">
+                      <input class="input is-danger" id="correo" class="input is-rounded is-hoverable is-danger" type="email" placeholder="Ingrese su nombre" value="ejemplo@noesvalido.com">
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                      </span>
+                      <span class="icon is-small is-right">
+                        <i class="fas fa-exclamation-triangle"></i>
+                      </span>
+                    </div>
+                    <p class="help is-danger">This email is invalid</p>
+                  </div> 
+                  <!-- Pais -->
+                  <div class="field">
+                    <label for="pais" class="">País</label>
+                    <p class="control has-icons-left">
+                      <span class="control is-expanded">
+                        <span class="select is-fullwidth is-rounded">
+                          <select id="pais">
+                            <option value="Argentina">Argentina</option>
+                            <option value="Bolivia">Bolivia</option>
+                            <option value="Brazil">Brazil</option>
+                            <option value="Chile">Chile</option>
+                            <option value="Colombia">Colombia</option>
+                            <option value="Ecuador">Ecuador</option>
+                            <option value="Guyana">Guyana</option>
+                            <option value="Paraguay">Paraguay</option>
+                            <option value="Peru">Peru</option>
+                            <option value="Suriname">Suriname</option>
+                            <option value="Uruguay">Uruguay</option>
+                            <option value="Venezuela">Venezuela</option>
+                          </select>
+                        </span>
+                      </span>
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-globe"></i>
+                      </span>
+                    </p>
+                  </div>
+                  <!-- Telefono -->
+                  <div class="field">
+                      <label for="telefono" class="file-label">Teléfono</label>
+                      <div class="field-body">
+                        <div class="field is-expanded">
+                          <div class="field has-addons">
+                            <p class="control">
+                              <span class="select">
+                                <select class="">
+                                  <option>+598</option>
+                                  <option>+44</option>
+                                  <option>+010</option>
+                                </select>
+                              </span>
+                            </p>
+                            <p class="control is-expanded">
+                              <input class="input is-hoverable is-rounded id="telefono" type="text" placeholder="Ingrese su número de teléfono">
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  <!-- Edad  -->
+                  <div class="field">
+                    <label for="edad" class="">Edad</label>
+                    <div class="control">
+                      <input class="input is-rounded is-hoverable" id="edad" type="number" placeholder="Ingrese su edad">
+                    </div>
+                  </div>
+                  <!-- Boton -->
+                  <div class="field is-grouped justify-content-center">
+                    <div class="control">
+                      <button class="button is-success" onclick="guardarCambios();">Guardar cambios</button>
+                    </div>            
+                  </div>
+                </div>
+              </div>
 
 
           </div>
 
-          <!-- Mostrar datos -->
-          <div class="content center" id="desplegar">
+          <!-- Información de la cuenta -->
+          <div id="ventana-info" class="ventanaInfo cerrarVentanita box" style="border-radius: 3%;" >
+            <!-- Cabecera -->
+                
+                
+            <div id="cerrar-info" style="position:absolute; left: 90%;margin-top: 2%; border-radius: 50%; opacity: 50%;" class="cerrar sombritaHover" ><i class="far fa-times-circle fa-2x text-muted" style="size: 2x;"></i></div> 
+            <div class="block content center text-center justify-content-center" style="margin-bottom: 5%;margin-top: 5%;">
+              <span class="title is-2 text-center">Infomación de la cuenta</span><br><br>
+              <small class="content text-center text-muted" style="right: 50%;">Aquí encontraras toda tu información personal y datos de la cuenta.</small>
+              <hr style="width: 70%; position: relative; left: 15%;">
+            </div>
+
+            <!-- Cuerpo -->
+            <div class="table justify-content-center">
+              <div id="mostrar-info" class="columns justify-content-center text-center" style="margin: 2%;">
+
+               <!-- Base -->
+                <div class="column is-5 text-right">
+                  <div class="table list">
+                      <div class="content">
+                          <span class="subtitle"> Nombre completo</span>
+                      </div>
+                      <div class="content">
+                          <span class="subtitle" for=""> Usuario</span>
+                      </div>
+                      <div class="content">
+                          <span class="subtitle" for=""> Correo electrónico</span>
+                      </div>
+                      <div class="content">
+                          <span class="subtitle" for=""> Teléfono</span>
+                      </div>
+                      <div class="content">
+                          <span class="subtitle" for=""> Pais</span>
+                      </div>
+                      <div class="content">
+                          <span class="subtitle" for=""> Edad </span>
+                      </div>  
+                  </div>
+              </div>  
+              <div class="column text-left">
+                  <div class="table list">
+                      <div class="content">
+                          <span class="subtitle text-muted" id="m-nombre">   ${usuario.nombreCompleto} </span>
+                      </div>
+                      <div class="content">
+                          <span class="subtitle text-muted" id="m-usuario">  ${usuario.nombre} </span>
+                      </div>
+                      <div class="content">
+                          <span class="subtitle text-muted" id="m-corre">   ${usuario.corre} </span>
+                      </div>
+                      <div class="content">
+                          <span class="subtitle text-muted" id="m-telefono">  ${usuario.telefono} </span>
+                      </div>
+                      <div class="content">
+                          <span class="subtitle text-muted" id="m-pais">  ${usuario.pais} </span>
+                      </div>
+                      <div class="content">
+                          <span class="subtitle text-muted" id="m-edad"> ${usuario.edad} </span>
+                      </div>
+                  </div>
+                </div> 
+              
+              </div>
+
+            </div>
+
 
           </div>
 

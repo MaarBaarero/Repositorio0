@@ -21,10 +21,10 @@ function showProductsList(productosArray) {
     if (producto.cost >= min && producto.cost <= max) {
       htmlContentToAppend +=
         `
-        <div class="table" style="padding:1%">
-          <div class="columns box">
+        <div class="block" style="padding:1%">
+          <div class="columns sombritaHover box">
 
-            <div class="column">
+            <div class="column is-5">
               <img class="sombritaImagen" src="${producto.imgSrc}">
             </div>
 

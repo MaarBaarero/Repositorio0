@@ -50,39 +50,37 @@ document.addEventListener("DOMContentLoaded", function (e) {
 // Mostrar toda la informacion del producto
 function mostrarInfoProducto(infoProducto) {
   informacion = `
-    <div class="list-group-item list-group-item-action">
-        <div class="d-flex w-100 justify-content-center">                           
-            <h1 class="row justify-content-center ">
-            ${infoProducto.name} 
-            </h1> 
-        </div><hr><br>
-              
-        <div class="row">
-            <div class="col">
-                <img class="sombritaImagen" src="${infoProducto.images[0]}">
-                <hr>
-            </div>
+    <div class="block box content center">
 
-            <div class="col">
-                <hr><br>
-                <div class="d-flex w-100 justify-content-between">
-                <p class="mb-1">
-                ${infoProducto.description}
-                </p>
-            </div><hr><br>
-            
-            <div class="d-flex w-100 justify-content-between">                           
-                <small class="text">
-                ${infoProducto.soldCount}
-                 artículos vendidos</small>
-                <h3 class="text-muted">
-                ${infoProducto.currency}                 
-                ${infoProducto.cost}
-                 </h3>
-            </div>
+      <div class="content text-center">                           
+        <h1 class="title is-3 text-center">${infoProducto.name}</h1> 
+      </div>
+      <hr><br>
+              
+      <div class="columns">
+        <div class="column">
+            <img class="sombritaImagen" src="${infoProducto.images[0]}">
+            <hr>
         </div>
+
+        <div class="column">
+          <hr>
+          <div class="d-flex w-100 justify-content-between">
+          <span class="content">${infoProducto.description}</span>
+          <hr>
+        </div>
+        
+        <div class="columns content">
+          <div class="column is-7 content">
+            <small class="text">${infoProducto.soldCount} artículos vendidos</small>
+          </div>
+          <div class="column content">
+            <span class="subtitle is-3 text-muted" > ${infoProducto.currency}${infoProducto.cost}</span>
+          </div>
+        </div>
+
+      </div>
     </div>
-    <hr><br>  
     `;
 
     document.getElementById("info-productos").innerHTML = informacion;
@@ -173,51 +171,60 @@ function mostrarEstrellas(puntos) {
 function mostrarGaleria(infoProducto) {
     
     galeria =`
-    <div class="list-group-item list-group-item-action">
-        <div class="card">
-            <div class="row justify-content-center">
-
-                <div class="zoom col d-block">
-                    <img class="sombritaImagen" src="${infoProducto.images[4]}">                    
-                    <div class="zoom-content">
-                        <img class="sombritaImagen" src="${infoProducto.images[4]}" style="width: 500px;">
-                        <div class="carousel-caption d-none d-md-block" style="opacity:0.9">
-                            <h1 style="color: white;text-shadow: 2px 2px 4px black;">Diseño único a tu alcance</h1>                            
-                        </div>
-                    </div>
+    <div class="block content center text-center">
+        <div class="table is-hoverable">
+            <div class="columns content center text-center">
+                
+              <div class="column zoom">
+                <img class="sombritaImagen" src="${infoProducto.images[1]}">
+                <hr>
+                <div class="zoom-content">
+                  <img class="sombritaImagen" src="${infoProducto.images[1]}">
+                  <div class="carousel-caption text-center" style="opacity:0.9;margin-top:50%;">
+                    <hr>
+                    <span class="subtitle is-3" style="color: white;margin-top:30%;text-shadow: 2px 2px 4px black;">Rendimiento a toda prueba</span>                            
+                  </div>
                 </div>
+              </div>  
 
-                <div class="zoom col d-block">
-                    <img class="sombritaImagen" src="${infoProducto.images[2]}">
-                    <div class="zoom-content">
-                        <img class="sombritaImagen" src="${infoProducto.images[2]}" style="width: 500px;">
-                        <div class="carousel-caption d-none d-md-block" style="opacity:0.9">
-                            <h1 style="color: white;text-shadow: 2px 2px 4px black;">Más comodidad al viajar</h1>                          
-                        </div>
-                    </div>
+              <div class="column zoom">
+                <img class="sombritaImagen" src="${infoProducto.images[2]}">
+                <hr>
+                <div class="zoom-content">
+                  <img class="sombritaImagen" src="${infoProducto.images[2]}">
+                  <div class="carousel-caption text-center" style="opacity:0.9;margin-top:30%;">
+                  <hr><br>
+                    <span class="subtitle is-3" style="color: white;margin-top:30%;text-shadow: 2px 2px 4px black;">Más comodidad al viajar</span>                            
+                  </div>
                 </div>
+              </div>  
 
-                <div class="zoom col d-block">
-                    <img class="sombritaImagen" src="${infoProducto.images[1]}">
-                    <div class="zoom-content">
-                        <img class="sombritaImagen" src="${infoProducto.images[1]}" style="width: 500px;">
-                        <div class="carousel-caption d-none d-md-block" style="opacity:0.9">
-                        <h1 style="color: white;text-shadow: 2px 2px 4px black;">Rendimiento a toda prueba</h1>                        
-                        </div>
-                    </div>
+              <div class="column zoom">
+                <img class="sombritaImagen" src="${infoProducto.images[3]}">
+                <hr>
+                <div class="zoom-content">
+                  <img class="sombritaImagen" src="${infoProducto.images[3]}">
+                  <div class="carousel-caption text-center" style="opacity:0.9;margin-top:30%;">
+                  <hr><br>
+                    <span class="subtitle is-3" style="color: white;margin-top:30%;text-shadow: 2px 2px 4px black;">Seguridad por todos los caminos</span>                            
+                  </div>
                 </div>
+              </div>  
 
-                <div class="zoom col d-block">
-                    <img class="sombritaImagen" src="${infoProducto.images[3]}">
-                    <div class="zoom-content">
-                        <img class="sombritaImagen" src="${infoProducto.images[3]}" style="width: 500px;">
-                        <div class="carousel-caption d-none d-md-block" style="opacity:0.9">
-                            <h1 style="color: white;text-shadow: 2px 2px 4px black;">Seguridad por todos los caminos</h1>                            
-                        </div>
-                    </div>
-                </div>                
-            </div>
+              <div class="column zoom">
+                <img class="sombritaImagen" src="${infoProducto.images[4]}">
+                <hr>
+                <div class="zoom-content">
+                  <img class="sombritaImagen" src="${infoProducto.images[4]}">
+                  <div class="carousel-caption text-center" style="opacity:0.9;margin-top:30%;">
+                  <hr><br>
+                    <span class="subtitle is-3" style="color: white;margin-top:30%;text-shadow: 2px 2px 4px black;">Diseño único a tu alcance</span>                            
+                  </div>
+                </div>
+              </div>  
+
         </div>
+      </div>
     </div>
     `;
 
@@ -231,20 +238,23 @@ function productosRelacionados(array){
 
       relacionados += `
       
-        <a class="relacionados"><div  class="justify-content-center" style="width: 500px;">
-        
-          <div class="card justify-content-center" style="width: 500px;">
-            <img class="sombritaImagen" src="${productosArray[rel].imgSrc}" style="width: 500px;">
-          </div>
-
-          <div class="row justify-content-center" style="width: 500px; margin-top:15px">
-            <h3 class="text-muted justify-content-center">${productosArray[rel].name}</h3>                
-          </div>
-
-        </div></a>
-        <hr>
+      <div  class="column sombritaHover justify-content-center" style="width: 60%; padding:3%">
+      
+        <div class="block content center" style="width: 100%;">
+          <figure class="image">
+            <img class="sombritaImagen" src="${productosArray[rel].imgSrc}" style="width: 100%;">
+          </figure>
+        </div>
+          
+        <div class="block content center text-center" style="width: 100%;">
+          <hr>
+          <h3 class="subtitle is-3 text-muted">${productosArray[rel].name}</h3>                
+        </div>
+          
+      </div>
         `;
-
+        // <a class="relacionados" style="width: 100%;">
+            
     });
     document.getElementById("productos-relacionados").innerHTML = relacionados;
 }

@@ -15,17 +15,18 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <!-- Bulma CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   
+  <!-- Animacion -->
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <!-- Bulma CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">  
   
- 
    <!--Google-->
    <meta name="google-signin-scope" content="profile email">
    <meta name="google-signin-client_id" content="1010450091429-djd956da7qplb0pbf7uner5enn3a7d47.apps.googleusercontent.com">
    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
    <!--Google-->
 
    <style>
@@ -55,7 +56,7 @@
       display:inline-block;
     }  
         
-    .card img{
+    .card img class="sombritaImagen"{
       width: 80%;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
@@ -123,7 +124,7 @@
           <a id="nombre" class="navbar-link is-arrowless justify-content-center"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 5px; color: white; width: 200px; text-align: center; margin-bottom:auto; margin-top:auto">
           </a> 
           <div class="" style="margin-bottom:auto; margin-top:auto; width:auto;">
-            <img id="avatar" style="width: 100%; border-radius:50%;">
+            <img class="sombritaImagen" id="avatar" style="width: 100%; border-radius:50%;">
           </div>
           <div class="navbar-dropdown">
             <a class="navbar-item" href="cart.html">Ver mi carrito<i class="fas fa-shopping-basket" style="margin-left: 50px;"></i></a>
@@ -160,7 +161,7 @@
       <div>
         <div class="container">
           <hr><br>
-          <h1 class="row justify-content-center" style="margin-bottom: 10px;"> Échale un vistazo a los comentarios </h1>
+          <h1 class="title is-3 text-center" style="margin-bottom: 10px;"> Échale un vistazo a los comentarios </h1>
 
           <div class="row justify-content-center">
             <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_ur7sluxh.json" mode="bounce" background="transparent"  speed="0.85"  style="width: 400px; height: 400px;" hover loop  ></lottie-player>
@@ -176,12 +177,14 @@
         <!-- Mensaje de confirmacion -->
         <div id="confirmacion" class="row justify-content-center">      
         </div>    
+
       </div>
+
       <!-- Dejar comentario -->
       <div>
         <div class="row justify-content-center">     
-          <h1 class="row justify-content-center" style="margin-left: 20px;margin-right: 20px;"> ¡ Déjanos tu comentario ! </h1>           
-        </div>    
+          <h1 class="subtitle is-3 text-center " style="margin-left: 20px;margin-right: 20px;"> ¡ Déjanos tu comentario ! </h1>           
+        </div>    <br>
         <div class="row justify-content-center">
           <lottie-player style="width: 100px;" src="https://assets8.lottiefiles.com/packages/lf20_6PnLAF.json"  background="transparent"  speed="0.5"  style="width: 300px; height: 300px;"  loop  autoplay></lottie-player>
         </div>
@@ -234,23 +237,18 @@
     </div>
 
     <!-- Productos relacionados -->
-    <div>
-      <div class="container">
-
-        <hr><br>
-        <h1 class="row justify-content-center" style="margin-bottom: 10px;"> Tenemos unos productos relacionados para tí </h1>
-        <div class="row justify-content-center">
-          <!-- <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_ur7sluxh.json" mode="bounce" background="transparent"  speed="0.85"  style="width: 400px; height: 400px;" hover loop  ></lottie-player> -->
-        </div> 
-
-        <hr>
-        <!-- Galeria de recomendados -->
-        <div class="row justify-content-center justify-content-between"></div>
-          <div id="productos-relacionados" class="row justify-content-center">                
-          </div>
+    <div class="block content center" style="margin-top: 15%;">
+      <div class="block content center text-center">
+        <div class="content center">          
+          <h1 class="subtitle is-3 text-center" style="margin-bottom: 10px;"> Tenemos unos productos relacionados para tí </h1>
+          <hr>
         </div>
 
-
+        <!-- Galeria de recomendados -->
+        <div class="table is-hoverable content center text-center" style="margin-top: 5%;">
+          <div id="productos-relacionados" class="columns box content center text-center">                
+          </div>
+        </div>
 
       </div>      
     </div>
