@@ -16,17 +16,10 @@
    <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
    <!--Google-->
  
-   
-  <!-- Animacion -->
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
-
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
+    
   <style>
     
+
     body{
       max-width: 100%;
     }
@@ -59,26 +52,36 @@
       }
     }
   </style>
+  
+  <!-- Animacion -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <!-- Bulma CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  
 </head>
 
 <body>
   <!-- Barra de navegación -->
   <nav class="navbar is-info" role="navigation" aria-label="dropdown navigation" >
     <div class="container d-flex flex-column flex-md-row justify-content-between" style="height: 10px;">
-      <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="index.html"><i class="fas fa-home" style="margin-right: 15px;"></i>Inicio</a>
+      <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="index.html"><i class="fas fa-home" style="margin-right: 15px"></i>Inicio</a>
       <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="categories.html"><i class="fas fa-bars" style="margin-right: 15px;"></i>Categorías</a>
       <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="products.html"><i class="fas fa-car" style="margin-right: 15px;"></i>Productos</a>
       <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="sell.html"><i class="fas fa-comments-dollar" style="margin-right: 15px;"></i>Vender</a>
       <!-- Usuario -->
       <div style="margin-bottom:auto; margin-top:auto">
         <div class="navbar-item has-dropdown is-hoverable" >
-          <a id="nombre" class="navbar-link is-arrowless justify-content-center"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 5px; color: white; width: 200px; text-align: center; margin-bottom:auto; margin-top:auto">
+          <a id="nombre" class="navbar-link is-arrowless justify-content-center"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 5%; color: white; width: 300px; text-align: center; margin-bottom:auto; margin-top:auto">
           </a> 
           <div class="" style="margin-bottom:auto; margin-top:auto; width:auto;">
             <figure class="image">    
@@ -86,10 +89,10 @@
             </figure>
           </div>
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="cart.html">Ver mi carrito<i class="fas fa-shopping-basket" style="margin-left: 50px;"></i></a>
-            <a class="navbar-item" href="my-profile.html">Ver mi perfil<i class="fas fa-user-circle" style="margin-left: 60px;"></i></a>
+            <a class="navbar-item" href="cart.html">Ver mi carrito<i class="fas fa-shopping-basket" style="margin-left: 150px;"></i></a>
+            <a class="navbar-item" href="my-profile.html">Ver mi perfil<i class="fas fa-user-circle" style="margin-left: 160px;"></i></a>
             <hr class="navbar-divider">
-            <a class="navbar-item" href="#" onclick="desconectar();">Cerrar sesión <i class="fas fa-sign-out-alt" style="margin-left: 50px;"></i></a>
+            <a class="navbar-item" href="#" onclick="desconectar();">Cerrar sesión <i class="fas fa-sign-out-alt" style="margin-left: 155px;"></i></a>
           </div>          
         </div>
       </div>      
@@ -106,25 +109,31 @@
       <small class="text-center text-muted">Desde visualizar y modificar tu información personal, tanto como ver tus pedidos recientes, favoritos, tus compras y demás</small>
       <hr>
     </div>
+
     
+    <!-- Contenido -->
     <div class="columns content center" style="max-width: 100%;">
       
-      <!-- side -->
+      <!-- Side -->
       <div class="column fondito is-3 is-narrow">  
         <div class="box content center">
-          <div class="content center">
-            <!-- Imagen -->
-            <figure class="image">    
-              <img class="sombritaImagen is-rounded" id="foto-perfil" style="width: 80%; margin-left: 10%; margin-right: auto;">
-            </figure>
-          </div>
-          <div>
-            <h2 class="title is-3 content center" id="nombre-perfil" style="text-align: center;"></h2>
+          <!-- Avatar y nombre -->
+          <div class="block content center">
+            <div class="content center">
+              <!-- Imagen -->
+              <figure class="image">    
+                <img class="sombritaImagen is-rounded" id="foto-perfil" style="width: 80%; margin-left: 10%; margin-right: auto;">
+              </figure>
+            </div>
+            <div>
+              <h2 class="title is-3 content center" id="nombre-perfil" style="text-align: center;"></h2>
+            </div>
           </div>
           <hr>
+          <!-- Secciones -->
           <div class="list">
             <div class="column btn-group btn-group-toggle" data-toggle="buttons"><!-- Secciones -->
-              <label for="cuenta" class="btn btn-light" onclick="" style="width: 100%;">
+              <label for="cuenta" id="info-cuenta" class="btn btn-light" onclick="" style="width: 100%;">
                 <input
                   type="radio"
                   name="opcion"
@@ -183,7 +192,7 @@
         </div>
       </div>  
     
-      <!-- main -->
+      <!-- Main -->
       <div class="column fondito" style="width: max-content;">
         <div class="box content center">
 
@@ -196,7 +205,7 @@
           </div>
 
           <!-- Formulario actualizar datos -->
-          <div id="ventana-actualizar" class="ventanaActualizar cerrarVentanita box" style="border-radius: 3%;">
+          <div id="ventana-actualizar" class="ventanaActualizar cerrarVentanita box" style="border-radius: 3%; display:none">
             <!-- <div class="modal-background"></div> -->
             <!-- <div class="modal-content" style="border-radius: 5%; width: 100%;"> -->
 
@@ -211,7 +220,9 @@
                 </div>
     
                 <!-- Cuerpo del form -->
-                <div style="margin-bottom: 5%;">                
+                <div style="margin-bottom: 5%;">          
+                  
+                  
                   <!-- Subir imagen -->
                   <div class="columns">
                     <div class="column">                   
@@ -230,6 +241,7 @@
                         <div class="field" style="margin-left: 5%;margin-top: 5%;position: relative;">
                           <div class="file is-info has-name is-boxed">
                             <label for="imagen" class="file-label sombritaHover">
+                              
                               <input class="file-input" type="file" id="imagen" name="imagen">
                               <span class="file-cta">
                                 <span class="file-icon">
@@ -334,7 +346,7 @@
                               </span>
                             </p>
                             <p class="control is-expanded">
-                              <input class="input is-hoverable is-rounded id="telefono" type="text" placeholder="Ingrese su número de teléfono">
+                              <input class="input is-hoverable is-rounded" id="telefono" type="text" placeholder="Ingrese su número de teléfono">
                             </p>
                           </div>
                         </div>
@@ -360,7 +372,7 @@
           </div>
 
           <!-- Información de la cuenta -->
-          <div id="ventana-info" class="ventanaInfo cerrarVentanita box" style="border-radius: 3%;" >
+          <div id="ventana-info" class="ventanaInfo cerrarVentanita box" style="border-radius: 3%; display:none" >
             <!-- Cabecera -->
                 
                 
@@ -374,55 +386,7 @@
             <!-- Cuerpo -->
             <div class="table justify-content-center">
               <div id="mostrar-info" class="columns justify-content-center text-center" style="margin: 2%;">
-
-               <!-- Base -->
-                <div class="column is-5 text-right">
-                  <div class="table list">
-                      <div class="content">
-                          <span class="subtitle"> Nombre completo</span>
-                      </div>
-                      <div class="content">
-                          <span class="subtitle" for=""> Usuario</span>
-                      </div>
-                      <div class="content">
-                          <span class="subtitle" for=""> Correo electrónico</span>
-                      </div>
-                      <div class="content">
-                          <span class="subtitle" for=""> Teléfono</span>
-                      </div>
-                      <div class="content">
-                          <span class="subtitle" for=""> Pais</span>
-                      </div>
-                      <div class="content">
-                          <span class="subtitle" for=""> Edad </span>
-                      </div>  
-                  </div>
-              </div>  
-              <div class="column text-left">
-                  <div class="table list">
-                      <div class="content">
-                          <span class="subtitle text-muted" id="m-nombre">   ${usuario.nombreCompleto} </span>
-                      </div>
-                      <div class="content">
-                          <span class="subtitle text-muted" id="m-usuario">  ${usuario.nombre} </span>
-                      </div>
-                      <div class="content">
-                          <span class="subtitle text-muted" id="m-corre">   ${usuario.corre} </span>
-                      </div>
-                      <div class="content">
-                          <span class="subtitle text-muted" id="m-telefono">  ${usuario.telefono} </span>
-                      </div>
-                      <div class="content">
-                          <span class="subtitle text-muted" id="m-pais">  ${usuario.pais} </span>
-                      </div>
-                      <div class="content">
-                          <span class="subtitle text-muted" id="m-edad"> ${usuario.edad} </span>
-                      </div>
-                  </div>
-                </div> 
-              
               </div>
-
             </div>
 
 

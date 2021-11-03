@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             
             usuario.nombre = user.value;
             usuario.estado = "Conectado";
-            usuario.avatar = "https://e7.pngegg.com/pngimages/778/849/png-clipart-computer-icons-user-login-avatar-small-icons-angle-heroes.png"
+            usuario.avatar = "https://yca.org.ar/wp-content/uploads/sites/4/2019/06/perfil-avatar-hombre-icono-redondo_24640-14044.jpg"
             
             localStorage.setItem('usuario',JSON.stringify(usuario));
             sessionStorage.setItem('usuario',JSON.stringify(usuario));

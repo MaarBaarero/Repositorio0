@@ -88,32 +88,38 @@ function calcular(){
     
     console.log(`------- ARTICULO -------`);    
     
-    // el otro subtotal final: 20012500
+    // el otro subtotal final:
     subtotalF += parseInt(subtotal);
     console.log("el otro subtotal final: "+subtotalF);
 
     
-    total += parseFloat(subtotalF);
     i++;
   }
   
+  total = parseFloat(subtotalF);
   // Envios
   if(document.getElementById("envio-normal").checked == true){
-    envio = 150
-    total += parseFloat(envio);  
+    
+    total += parseFloat(document.getElementById("envio-normal").value);  
     console.log("Total con envio: "+total)
+    envio = document.getElementById("envio-normal").value;
   }
   if(document.getElementById("envio-express").checked == true){
-    envio = 350
-    total += parseFloat(envio);  
+    total += parseFloat(document.getElementById("envio-express").value);  
     console.log("Total con envio: "+total)
+    envio = document.getElementById("envio-express").value;
   }
   if(document.getElementById("sin-envio").checked == true){
-    envio = 0 //Por si tocan otro antes me aseguro de que vuelva a cero
-    total += parseFloat(envio);  
+    total += parseFloat(document.getElementById("sin-envio").value);  
     console.log("Total con envio: "+total)
+    envio = document.getElementById("sin-envio").value;
   }
+
+
+  console.log("------ TOTALES -------")
   console.log("Envio: "+envio)
+  console.log("Subtotal: "+subtotalF)
+  console.log("Total: "+total)
 
   document.getElementById("envio").innerHTML = envio
   document.getElementById("subtotal").innerHTML = (subtotalF).toFixed(2);
