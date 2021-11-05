@@ -10,17 +10,6 @@ let nacimiento;
 let datos;
 
 
-// probando mas weas que no funcionaron
-
-// const imagenInput = document.getElementById("imagen");
-//   imagenInput.onchange = () => {
-//     if (imagenInput.files.length > 0) {
-//       const fileName = document.querySelector('#file-js-example .file-name');
-//       fileName.textContent = imagenInput.files[0].name;
-//     }
-//   }
-
-
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -29,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
     document.getElementById("vista-previa").src = usuario.avatar;
     document.getElementById("vista-previa-zoom").src = usuario.avatar;
-    document.getElementById("foto-perfil").src = usuario.avatar;
+    document.getElementById("foto-perfil").src = usuario.avatar;    
     document.getElementById("nombre-perfil").innerText = usuario.nombre;
     document.getElementById("nombre-usuario").value = usuario.nombre;
     mostrarInfo();
@@ -57,16 +46,32 @@ document.addEventListener("DOMContentLoaded", function (e) {
     })
     
     // probando weas
-    document.getElementById("imagen").addEventListener("change", () => {
-        nuevoAvatar = document.getElementById("imagen").value;   
-        console.log(nuevoAvatar);
-        document.getElementById("vista-previa").src = nuevoAvatar;
-        document.getElementById("vista-previa-zoom").src = nuevoAvatar;  
+    let elementoImagen = document.getElementById("imagen")
+    elementoImagen.addEventListener("change", () => {
+
+        let archivo = elementoImagen.files[0];
+        console.log(archivo)
+
+
+        let reader = new FileReader();
+        reader.readAsDataURL(archivo);
+        reader.onloadend = function() {
+            nuevoAvatar = reader.result;
+            document.getElementById("vista-previa").src = nuevoAvatar;
+            document.getElementById("vista-previa-zoom").src = nuevoAvatar;  
+        }
+
+
+
     });
     
+
     console.log(usuario);
 
 });
+
+
+
 
 function guardarCambios(){
 
@@ -89,6 +94,7 @@ function guardarCambios(){
     localStorage.setItem('usuario',JSON.stringify(usuario));
     sessionStorage.setItem('usuario',JSON.stringify(usuario));
     alert("Done")
+    location.reload();
 }
 
 function mostrarInfo(){

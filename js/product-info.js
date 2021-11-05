@@ -49,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
 // Mostrar toda la informacion del producto
 function mostrarInfoProducto(infoProducto) {
+
   informacion = `
     <div class="block box content center">
 
@@ -59,8 +60,8 @@ function mostrarInfoProducto(infoProducto) {
               
       <div class="columns">
         <div class="column">
-            <img class="sombritaImagen" src="${infoProducto.images[0]}">
-            <hr>
+          <img class="sombritaImagen" src="${infoProducto.images[0]}">
+          <hr>
         </div>
 
         <div class="column">

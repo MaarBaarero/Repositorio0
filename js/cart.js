@@ -1,68 +1,115 @@
 const URL = "http://japdevdep.github.io/ecommerce-api/cart/654.json"
 let carritoArray = "";
-let total = "";
-let subtotal = "";
+let articulos = "";
+let total = 0;
+let subtotal = 0;
+let envioSeleccionado = 0;
+let envio = 0;
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
   
+  // let botoncitos = document.getElementsByClassName("eliminarArticulo");
+  // console.log("botoncitos: "+botoncitos);
+
+  // for(boton of botoncitos){
+  //   console.log("boton: "+boton);
+
+  //   boton.addEventListener("click", function (){
+  //     alert("a");
+  //     console.log("AAAAAAAAAAAA");
+  //   });
+  // }
+
   // Json Carrito
   getJSONData(URL).then(function (resultObj) {
     if (resultObj.status === "ok") {
       carritoArray = resultObj.data;
       mostrarCarrito(carritoArray);
       console.log(carritoArray);
+      resumen(carritoArray);
     }
-  
   });
+
 
 });
 
+function resumen(carritoArray){
+
+  for (art of carritoArray.articles){
+    articulos += `
+    <div class="row">
+      <div class="col text-muted text-left">
+      <span class="content"> ${art.name} </span>
+      </div>
+      <div class="col-1 text-muted text-left">
+        <span class="content"> x${art.count} </span>
+      </div>
+      <div class="col-4 text-muted text-left">
+        <span class="content"> ${art.currency}  ${art.unitCost} </span>
+      </div>
+    </div>
+    <br>
+
+    `;
+  }
+
+  document.getElementById("resumen").innerHTML = articulos;
+
+  
+}
 
 function mostrarCarrito(carritoArray){
 
-    let articulos = "";
-    let i=0;
+  let articulos = "";
+  let i=0;
 
-    for (art of carritoArray.articles){
-      articulos += `
-    <tr class="container justify-content-center justify-content-between text-center" style="margin-block: auto;width: auto;">
-    
-    <td class="col" style="margin-top: auto; margin-bottom: auto;width:150px">
-        <div class="flex">
-        <img class="sombritaImagen" src="${art.src}" style="margin-top: 10px; margin-bottom: 10px;min-width: 150px;max-width: 150px">
+  for (art of carritoArray.articles){
+    articulos += `  
+    <div class="block box" id="articulo${i}">
+    <div id="eliminar${i}" style="position:absolute; left: 60%; border-radius: 50%; opacity: 50%;" class="eliminarArticulo sombritaHover" aria-label="close"><i class="far fa-trash-alt fa-2x" style="size: 2x; color:red;"></i></div>
+      <div class="content text-center">                           
+        <span class="title is-5">${art.name}</span>
+      </div>
+      <hr><br>
+              
+      <div class="columns justify-content-center">
+        <div class="column is-3">
+          <figure class="image">    
+            <img class="sombritaImagen" src="${art.src}">
+          </figure>
         </div>
-        </td>
-        <td class="col" style="margin-top: auto; margin-bottom: auto;min-width: 400px">
-        <div class="col" style="margin-top: auto; margin-bottom: auto;">
-        <span class="subtitle is-5" style="margin-top: 10px; margin-bottom: 10px;">${art.name}</span>
+        <div class="column">
+          <small class="text-muted text-center">Precio por unidad</small><br><br>
+          <span class="text-muted text-center">${art.currency}</span>
+          <span id="precio${i}" class="text-muted">${art.unitCost}</span>
         </div>
-        </td>
         
-        <td class="col" style="margin-top: auto; margin-bottom: auto;min-width:150px">
-        <input type="number" name="cantidad" id="cantidad${i}" onChange="calcular();" class="input number is-rounded is-warning" value=${art.count} style="margin-top: auto; margin-bottom: auto;width: 100px;">
-        </td>
-        
-        <td class="col" style="margin-top: auto; margin-bottom: auto;min-width:50px">
-        <span class="text-muted" style="margin-top: auto; margin-bottom: auto;">${art.currency}</span>
-        </td> 
-        <td class="col" style="margin-top: auto; margin-bottom: auto;min-width:150px">
-        <span id="precio${i}" class="text-muted" style="margin-top: auto; margin-bottom: auto;">${art.unitCost}</span>
-        </td>
-        
-        <td class="col" style="margin-top: auto; margin-bottom: auto;min-width:150px">
+        <div class="column justify-content-center">
+          <small class="text-muted text-center">Cantidad de artículos</small><br><br>
+          <input type="number" id="cantidad${i}" onChange="calcular();" class="input number is-rounded is-warning justify-content-center" value=${art.count} style="width: 60%">
+        </div>
+        <div class="column">
+          <small class="text-muted text-center">Subtotal</small><br><br>
           <div id="subtotal${i}"></div>        
-        </td>
-        </tr>
-        `;
-        i++;
+        </div>
+      </div>
+    </div>
+    `;
+    i++;
+
   }
+  
+  
   document.getElementById("carrito").innerHTML = articulos;
   calcular();
-
+  
+  
 }
+
+
 
 function calcular(){
   let precio = 0;
@@ -75,57 +122,44 @@ function calcular(){
 
   for (articulo of carritoArray.articles){
 
-    // Guardo el precio y cantidad en variables
     precio = parseFloat(articulo.unitCost);
-    console.log("Precio : "+articulo.unitCost);    
+    // console.log("Precio : "+articulo.unitCost);    
     cantidad = parseFloat(document.getElementById("cantidad"+i).value);
-    console.log("cantidad : "+cantidad);
-    
+    // console.log("cantidad : "+cantidad);
     subtotal = precio * cantidad;
-    console.log("subtotal : "+subtotal);
-    
-    document.getElementById("subtotal"+i).innerHTML = `<span  class="text-muted" style="margin-top: auto; margin-bottom: auto;">${subtotal}</span>`;
-    
-    console.log(`------- ARTICULO -------`);    
-    
-    // el otro subtotal final:
+    // console.log("subtotal : "+subtotal);
     subtotalF += parseInt(subtotal);
-    console.log("el otro subtotal final: "+subtotalF);
-
+    // console.log("el otro subtotal final: "+subtotalF);
+    
+    document.getElementById("subtotal"+i).innerHTML = `<span  class="text-muted" style="margin-top: auto; margin-bottom: auto;">${articulo.currency} ${subtotal}</span>`;
     
     i++;
   }
   
   total = parseFloat(subtotalF);
-  // Envios
-  if(document.getElementById("envio-normal").checked == true){
-    
-    total += parseFloat(document.getElementById("envio-normal").value);  
-    console.log("Total con envio: "+total)
-    envio = document.getElementById("envio-normal").value;
-  }
-  if(document.getElementById("envio-express").checked == true){
-    total += parseFloat(document.getElementById("envio-express").value);  
-    console.log("Total con envio: "+total)
-    envio = document.getElementById("envio-express").value;
-  }
-  if(document.getElementById("sin-envio").checked == true){
-    total += parseFloat(document.getElementById("sin-envio").value);  
-    console.log("Total con envio: "+total)
-    envio = document.getElementById("sin-envio").value;
-  }
+  total = parseInt(subtotalF) + parseInt(envioSeleccionado);
 
+  // Calculos de envio
+  document.getElementById("envio-seleccionado").addEventListener("change", () =>{
+    envioSeleccionado = document.getElementById("envio-seleccionado").value;
+    total = parseInt(subtotalF) + parseInt(envioSeleccionado);
+    console.log("Envio: "+envioSeleccionado);
+    console.log("Total despues de envio: "+total);
+    calcular();
+  })
 
-  console.log("------ TOTALES -------")
-  console.log("Envio: "+envio)
-  console.log("Subtotal: "+subtotalF)
-  console.log("Total: "+total)
-
-  document.getElementById("envio").innerHTML = envio
+  // Mostrar resultados 
+  document.getElementById("envio").innerHTML = envioSeleccionado;
   document.getElementById("subtotal").innerHTML = (subtotalF).toFixed(2);
   document.getElementById("total").innerHTML = (total).toFixed(2);
   
+  // consola
+  console.log("------ TOTALES -------");
+  console.log("Subtotal: "+subtotalF);
+  console.log("Total: "+total);
+
 }
+
 
 
 // JSON a mano para trabajar
@@ -147,4 +181,5 @@ function calcular(){
 //     "src": "img/prod3.jpg"
 //     }
 //     ]
-//     }
+//     }  
+  
