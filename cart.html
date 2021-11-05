@@ -67,6 +67,12 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <!-- Bulma CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+   <!-- Link a Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -186,11 +192,32 @@
                 <p class="text-muted text-center">Selecciona un medio de pago</p>
               </div>
               <div class="buttons" style="margin-top:10%">
-                <button class="button is-info is-fullwidth center" id="medios-de-pago">
+                <button class="button is-info is-fullwidth center" id="medios-de-pago" type="button" data-toggle="modal" data-target="#exampleModal">
                   <span class="icon"><i class="far fa-credit-card" style="margin-right: 10%;"></i></span>
                   <span>Medios de Pago</span>
                 </button>
               </div>
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      ...
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
             </div>
           </div>
 
@@ -216,7 +243,7 @@
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/Login/login.js"></script>
-  <script src="js/Login/OAuth/Google.js"></script>
+  <script src="js/Login/Google.js"></script>
 </body>
 
 </html>

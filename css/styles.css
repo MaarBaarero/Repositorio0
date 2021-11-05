@@ -1,28 +1,11 @@
 * {
-  padding: 0;
   margin: 0;
+  
 }
-/* 
-#ventana-actualizar{
-  display: none;
-} */
-
-/* .cerrarVentanita{
-  display: auto;
-}
-
-.ventanaActualizar{
-  display: none;
-}
-
-.modal{
-  display: block;
-  position: fixed;
-  z-index: 1;
-} */
 
 body, nav, div, img{
   max-width: 100%;  
+  height:auto;
 }
 
 header{

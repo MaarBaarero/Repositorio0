@@ -6,6 +6,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
+
   <!--Google-->
   <meta name="google-signin-scope" content="profile email">
   <meta name="google-signin-client_id" content="1010450091429-djd956da7qplb0pbf7uner5enn3a7d47.apps.googleusercontent.com">
@@ -14,71 +15,95 @@
 
   <title>eMercado - Todo lo que busques está aquí</title>
   
-  <!-- Bulma CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/login.css" rel="stylesheet">
+
+  <!-- Bulma CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <!-- Animacion -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  
+  <!-- Icons Font Awesome -->
+  <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
+  <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet">
+  <link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet">
+  <link href="/your-path-to-fontawesome/css/all.css" rel="stylesheet">
   <style>
-    html, body{
-      height: 100%;
-    }
 
-    body {
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-align: center;
-      align-items: center;
-      padding-top: 40px;
-      padding-bottom: 40px;
-      background-color: #f5f5f5;
-    }
-
-    .signin {
-      width: 100%;
-      max-width: 330px;
-      padding: 15px;
-      margin: auto;
-    }
-
-    .isValid{
-        background-color: lightgreen;
-        color: green;
-    }
-
-    .notValid{
-        background-color: pink;
-        color: red;
+    body{
+      padding-bottom: 50%;
     }
 
   </style>
+  
 </head>
 
-<body class="text-center">
-    <div><img src="img/logoceibal.png" width = "auto" height = "200px" /></div> <br><br><br><br><br><br><br><br>
-
-    <div class="login"><br><br>
-        <h1>Iniciar sesión</h1><br>
-        <div>  
-            <input type="text" id="user" name="user" placeholder="Usuario" required="required" /><br>
-            <input type="password" id="pass" name="pass" placeholder="Contraseña" required="required" /><br>
-            <span id="msj"></span><br>
-            <button id="login" class="btn btn-primary btn-block btn-large" onclick="verificar()">Ingresar</button><br><br>
-            <div class="g-signin2" style="width: 300px" data-onsuccess="onSignIn" data-theme="ligth" ></div><!--Google-->
-        </div>
+<body class="fondoVioleta">
     
+    <div class="row block" style="width: 100%;">
+      <div class="columns block" style="padding: 3%;">
+
+        <div class="column is-7">
+          <div class="block justify-content-center" style="margin: 3%;margin-right: 5%;margin-top: 25%; margin-bottom: 25%;">
+            <img src="img/logoceibal.png" style="width:80%; display: flex" height = "100%" />
+          </div>
+        </div>
+        
+        <div class="column row justify-content-center box" style="background-color:white;padding: 5%; margin-top: 5%; margin-bottom: 5%;">
+          <h1 class="title is-3 text-center" style="margin-bottom: 10%;">Iniciar sesión</h1>
+          <div class="justify-content-center">
+            
+            <div class="field" style="margin: 1%;">
+              <p class="control has-icons-left has-icons-right">
+                <input id="user" class="input is-link is-rounded is-fullwidth is-hoverable is-hovered" type="text" name="user" placeholder="Usuario" required="required" /><br>
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+              </p>
+            </div>                    
+            
+            <div class="field" style="margin: 1%;">
+              <p class="control has-icons-left">
+                <input id="pass" class="input is-link is-rounded is-fullwidth is-hoverable is-hovered" type="password" name="pass" placeholder="Contraseña" required="required" /><br>
+                <span class="icon is-small is-left">
+                  <i class="fas fa-key"></i>
+                </span>
+              </p>
+  
+              <div class="block">
+                <p id="msj" class="subtitle is-6 help text-center" style="margin: 2%;"></p>
+              </div>
+            </div>
+
+            <div class="field" style="margin: 5%;">
+              <div class="col justify-content-center">
+                <button id="login" class="button is-info is-fullwidth" style="margin-bottom: 7%; " onclick="verificar()">Ingresar</button>
+                <div class="g-signin2" style="width: 400%" data-onsuccess="onSignIn" data-theme="light">
+                </div><!--Google-->
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+    
+      </div>
     </div>
+    
     <!-- sacamos el type submit y cambiamos el form por div-->
 
 
-
-  <!-- <script src="js/init.js"></script> -->
-  <script src="js/Login/login.js"></script>
-  <script src="js/Login/OAuth/Google.js"></script>
+    <!-- <script src="js/init.js"></script> -->
+    <script src="js/Login/login.js"></script>
+    <script src="js/Login/Google.js"></script>
 
 </body>
 </html>

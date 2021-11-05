@@ -58,7 +58,7 @@ function resumen(carritoArray){
 
   document.getElementById("resumen").innerHTML = articulos;
 
-  
+  // slice
 }
 
 function mostrarCarrito(carritoArray){

@@ -10,9 +10,11 @@ const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
 var showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
 }
+
 var hideSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "none";
 }
+
 var getJSONData = function(url){
     var result = {};
     showSpinner();
@@ -43,10 +45,7 @@ var getJSONData = function(url){
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
 
-
-  //  ---> Redireccionar al login si el usuario no está loggeado}
   let usuario = JSON.parse(localStorage.getItem("usuario"));
-  
   if(usuario && usuario.estado === "Conectado"){
     console.log("Estás conectado")        
     document.getElementById("nombre").innerText = usuario.nombre;
@@ -55,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function(e){
   else{   
     console.log("No hay un usuario conectado")
     location.href = "login.html"
-    
   }
   
   
