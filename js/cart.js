@@ -1,4 +1,4 @@
-const URL = "http://japdevdep.github.io/ecommerce-api/cart/654.json"
+const URL = "https://japdevdep.github.io/ecommerce-api/cart/654.json"
 let carritoArray = "";
 let articulos = "";
 let total = 0;
@@ -11,18 +11,6 @@ let envio = 0;
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
   
-  // let botoncitos = document.getElementsByClassName("eliminarArticulo");
-  // console.log("botoncitos: "+botoncitos);
-
-  // for(boton of botoncitos){
-  //   console.log("boton: "+boton);
-
-  //   boton.addEventListener("click", function (){
-  //     alert("a");
-  //     console.log("AAAAAAAAAAAA");
-  //   });
-  // }
-
   // Json Carrito
   getJSONData(URL).then(function (resultObj) {
     if (resultObj.status === "ok") {

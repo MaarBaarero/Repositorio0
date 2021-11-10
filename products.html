@@ -3,31 +3,9 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <title>eMercado - Todo lo que busques está aquí</title>
-
-    <link
-      rel="canonical"
-      href="https://getbootstrap.com/docs/4.3/examples/album/"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i"
-      rel="stylesheet"
-    />
-    <link href="css/font-awesome.min.css" rel="stylesheet" />
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
-
-    <!-- Animacion -->
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
-    <!-- Bulma CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 
     <!--Google-->
     <meta name="google-signin-scope" content="profile email" />
@@ -41,35 +19,56 @@
         animation: pulse;
       }
     </style>
+    
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/dropzone.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Animacion -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    
+    <!-- Link a Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  
   </head>
+  
   <body>
     <!-- Barra de navegación -->
-    <header class="header" >
-      <nav class="navbar is-info" role="navigation" aria-label="dropdown navigation" >
-        <div class="container d-flex flex-column flex-md-row justify-content-between" style="height: 10px;">
-          <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="index.html"><i class="fas fa-home" style="margin-right: 15px;"></i>Inicio</a>
-          <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="categories.html"><i class="fas fa-bars" style="margin-right: 15px;"></i>Categorías</a>
-          <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="products.html"><i class="fas fa-car" style="margin-right: 15px;"></i>Productos</a>
-          <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="sell.html"><i class="fas fa-comments-dollar" style="margin-right: 15px;"></i>Vender</a>
-          <!-- Usuario -->
-          <div style="margin-bottom:auto; margin-top:auto">
-            <div class="navbar-item has-dropdown is-hoverable" >
-              <a id="nombre" class="navbar-link is-arrowless justify-content-center"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 5px; color: white; width: 200px; text-align: center; margin-bottom:auto; margin-top:auto">
-              </a> 
-              <div class="" style="margin-bottom:auto; margin-top:auto; width:auto;">
-                <img id="avatar" style="width: 100%; border-radius:50%;">
-              </div>
-              <div class="navbar-dropdown">
-                <a class="navbar-item" href="cart.html">Ver mi carrito<i class="fas fa-shopping-basket" style="margin-left: 50px;"></i></a>
-                <a class="navbar-item" href="my-profile.html">Ver mi perfil<i class="fas fa-user-circle" style="margin-left: 60px;"></i></a>
-                <hr class="navbar-divider">
-                <a class="navbar-item" href="#" onclick="desconectar();">Cerrar sesión <i class="fas fa-sign-out-alt" style="margin-left: 50px;"></i></a>
-              </div>          
+    <nav class="navbar is-info" role="navigation" aria-label="dropdown navigation" >
+      <div class="container d-flex flex-column flex-md-row justify-content-between" style="height: 10px;">
+        <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="index.html"><i class="fas fa-home" style="margin-right: 15px;"></i>Inicio</a>
+        <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="categories.html"><i class="fas fa-bars" style="margin-right: 15px;"></i>Categorías</a>
+        <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="products.html"><i class="fas fa-car" style="margin-right: 15px;"></i>Productos</a>
+        <a class="py-2 d-none d-md-inline-block" style="color: white;margin-bottom:auto; margin-top:auto" href="sell.html"><i class="fas fa-comments-dollar" style="margin-right: 15px;"></i>Vender</a>
+        <!-- Usuario -->
+        <div style="margin-bottom:auto; margin-top:auto">
+          <div class="navbar-item has-dropdown is-hoverable" >
+            <a id="nombre" class="navbar-link is-arrowless justify-content-center"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 5px; color: white; width: 200px; text-align: center; margin-bottom:auto; margin-top:auto">
+            </a> 
+            <div class="" style="margin-bottom:auto; margin-top:auto; width:auto;">
+              <img class="sombritaImagen" id="avatar" style="width: 100%; border-radius:50%;">
             </div>
-          </div>      
-        </div>
-      </nav>
-    </header>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="cart.html">Ver mi carrito<i class="fas fa-shopping-basket" style="margin-left: 50px;"></i></a>
+              <a class="navbar-item" href="my-profile.html">Ver mi perfil<i class="fas fa-user-circle" style="margin-left: 60px;"></i></a>
+              <hr class="navbar-divider">
+              <a class="navbar-item" href="#" onclick="desconectar();">Cerrar sesión <i class="fas fa-sign-out-alt" style="margin-left: 50px;"></i></a>
+            </div>          
+          </div>
+        </div>      
+      </div>
+    </nav>
+  
     
     <main role="main" class="main content center" style="max-width: 100%; margin-top: 2%; margin-left: 2%;">
       <div class="content text-center" style="max-width: 100%; margin-top: 10%;">

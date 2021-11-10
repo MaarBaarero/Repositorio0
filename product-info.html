@@ -1,6 +1,4 @@
-
 <!DOCTYPE html>
-<!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
 <html lang="en">
 
 <head>
@@ -10,39 +8,45 @@
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
 
+  <!--Google-->
+  <meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="1010450091429-djd956da7qplb0pbf7uner5enn3a7d47.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
+  <!--Google-->
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/font-awesome.min.css" rel="stylesheet">
+  
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/dropzone.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
   
   <!-- Animacion -->
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
-  <!-- Bulma CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">  
   
-   <!--Google-->
-   <meta name="google-signin-scope" content="profile email">
-   <meta name="google-signin-client_id" content="1010450091429-djd956da7qplb0pbf7uner5enn3a7d47.apps.googleusercontent.com">
-   <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
-   <!--Google-->
-
-   <style>
-     
-
+  <!-- Bulma CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  
+  <!-- Link a Bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  
+    <style>
+      
+  
     /* button:hover{
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       animation: pulse;
       animation-duration: 5s;
     }
-
+  
     .zoom {
       position: relative;
       display: inline-block;
     }
-
+  
     .zoom-content {
       display: none;
       position: absolute;
@@ -51,7 +55,7 @@
       z-index: 1;
       
     }
-
+  
     .zoom:hover .zoom-content {
       display:inline-block;
     }  
@@ -60,8 +64,8 @@
       width: 80%;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
-
-
+  
+  
     .estrellas {
     position: relative;
     overflow: hidden;
@@ -69,11 +73,11 @@
     direction: rtl;
     unicode-bidi: bidi-override;  
     }
-
+  
     .estrellas:hover{
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
-
+  
     .estrellas input {
     position: absolute;
     top: -100px;
@@ -84,13 +88,13 @@
     color: #c1b8b8;
     font-size: 30px; 
     }
-
+  
     .estrellas i:hover{
       color: rgb(255, 145, 0);
       animation: pulse;
       animation-duration: 5s;
     }
-   
+    
     .estrellas label:hover,
     .estrellas label:hover ~ label,
     .estrellas input[type="radio"]:checked ~ label {
@@ -98,16 +102,17 @@
     animation: pulse;
     animation-duration: 5s; 
     }
-
+  
     .relacionados:hover{ 
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
       animation: pulse;
       animation-duration: 5s;
     } */
-
+  
       
-   </style>
-   
+    </style>
+     
+  
 </head>
 
 <body>
@@ -139,17 +144,17 @@
     
 
   <!-- Main -->
-  <div class="container p-5">
+  <div class="block justify-content-center" style="padding: 5%">
     
     <!-- Información de producto -->
     <div>
       <!-- Info -->
-      <div id="info-productos" class="container" >      
+      <div id="info-productos" class="block" >      
       </div>
       
       <br>
       <!-- Galeria -->
-      <div id="galeria" class="container">
+      <div id="galeria" class="block justify-content-center" style="margin: 1%; ">
       </div>
     </div>  
 
@@ -160,12 +165,12 @@
       <!-- Mostrar comentarios -->
       <div>
         <div class="container">
-          <hr><br>
-          <h1 class="title is-3 text-center" style="margin-bottom: 10px;"> Échale un vistazo a los comentarios </h1>
-
+          
           <div class="row justify-content-center">
-            <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_ur7sluxh.json" mode="bounce" background="transparent"  speed="0.85"  style="width: 400px; height: 400px;" hover loop  ></lottie-player>
+            <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_ur7sluxh.json" mode="bounce" background="transparent"  speed="0.85"  style="width: 40%" hover loop  ></lottie-player>
           </div> 
+          <h1 class="title is-3 text-center" style="margin-bottom: 5%;"> Échale un vistazo a los comentarios </h1>
+          <hr><br>
 
           <!-- Mostrar comentarios -->
           <div id="comentarios" class="container" style="position: relative; width:auto; top: 0;">        
@@ -264,6 +269,7 @@
       <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
     </div>
   </footer>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -272,12 +278,14 @@
       <div></div>
     </div>
   </div>
+
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
   <script src="js/Login/login.js"></script>
   <script src="js/Login/Google.js"></script>
+
 </body>
 
 </html>
