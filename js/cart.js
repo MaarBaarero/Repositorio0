@@ -5,6 +5,7 @@ let total = 0;
 let subtotal = 0;
 let envioSeleccionado = 0;
 let envio = 0;
+let moneda;
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -20,6 +21,14 @@ document.addEventListener("DOMContentLoaded", function(e){
       resumen(carritoArray);
     }
   });
+
+  initPayPalButton();
+  validacion();
+
+  document.getElementById("opciones-pago").addEventListener("change", ()  =>{
+    console.log("a")
+    document.getElementById("info-pago").removeAttribute("hidden") ;
+  })
 
 
 });
@@ -97,8 +106,6 @@ function mostrarCarrito(carritoArray){
   
 }
 
-
-
 function calcular(){
   let precio = 0;
   let cantidad = 0;
@@ -148,6 +155,31 @@ function calcular(){
 
 }
 
+function tipoMoneda(){
+  document.getElementById("tipoMoneda").addEventListener("change", () => {
+    if (tipo.value == "UYU") {
+      moneda = tipo.value;
+    }else if (tipo.value == "U$D") {
+      moneda = tipo.value;
+    }
+  });
+
+}
+
+function validacion(){
+  let controles = [];
+  controles = document.getElementsByClassName("validar");
+  document.getElementById("confirmar-pago").addEventListener("click", () => {
+  for(control of controles){
+      if(control.value.trim() === ""){
+        control.classList.add("is-danger")
+      }else{
+        control.classList.remove("is-danger")
+        control.classList.add("is-info")
+      }
+    }
+  })
+}
 
 
 // JSON a mano para trabajar
